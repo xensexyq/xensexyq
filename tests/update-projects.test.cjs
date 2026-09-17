@@ -41,21 +41,36 @@ function mock(previous, fail = false) {
   const writes = [];
   return { writes, context: { repo: { owner, repo: owner }, payload: { repository: { default_branch: 'main' } } },
     core: { info() {} }, github: { paginate: async () => { if (fail) throw new Error('API unavailable'); return []; },
-      rest: { repos: { listForUser() {}, getContent: async () => ({ data: { type: 'file', encoding: 'base64',
-        sha: 'current-sha', content: Buffer.from(previous).toString('base64') } }),
+      rest: { repos: { listForUser() {}, getContent: async ({ path }) => ({ data: { type: 'file', encoding: 'base64',
+        sha: 'current-sha', content: Buffer.from(typeof previous === 'string' ? previous : previous[path]).toString('base64') } }),
       createOrUpdateFileContents: async data => writes.push(data) } } } };
 }
-test('API writes only README on default branch with concurrency protection', async () => {
+test('API writes both language READMEs on default branch with concurrency protection', async () => {
   const env = mock(readme); await update(env);
-  assert.equal(env.writes.length, 1);
+  assert.equal(env.writes.length, 2);
   assert.equal(env.writes[0].path, 'README.md');
   assert.equal(env.writes[0].sha, 'current-sha');
   assert.equal(env.writes[0].branch, 'main');
+  assert.equal(env.writes[1].path, 'README.en.md');
+  assert.ok(Buffer.from(env.writes[1].content, 'base64').toString('utf8').includes('View all repositories'));
 });
 test('unchanged content or failed API never writes', async () => {
-  const env = mock(replaceSection(readme, render([], owner))); await update(env);
+  const env = mock({ 'README.md': replaceSection(readme, render([], owner)),
+    'README.en.md': replaceSection(readme, render([], owner, 'en')) }); await update(env);
   assert.equal(env.writes.length, 0);
   const failed = mock(readme, true);
   await assert.rejects(update(failed), /API unavailable/);
   assert.equal(failed.writes.length, 0);
+});
+test('English labels are translated while repository descriptions remain verbatim', () => {
+  const result = render([repo('described', { description: '中文项目' }), repo('empty')], owner, 'en');
+  assert.ok(result.includes('中文项目'));
+  assert.ok(result.includes('No description provided'));
+  assert.ok(result.includes('Latest Projects'));
+  assert.ok(!result.includes('暂无描述'));
+});
+test('invalid English markers prevent all writes', async () => {
+  const env = mock({ 'README.md': readme, 'README.en.md': 'missing markers' });
+  await assert.rejects(update(env), /marker pair/);
+  assert.equal(env.writes.length, 0);
 });
