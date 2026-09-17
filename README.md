@@ -58,6 +58,8 @@
 
 ### 🤝 Connect with Me
 
+📧 Email: [nxuerobot@gmail.com](mailto:nxuerobot@gmail.com)
+
 欢迎通过项目 Issues 交流机器人仿真、嵌入式工具与工程实践。
 
 [![GitHub](https://img.shields.io/badge/GitHub-xensexyq-181717?logo=github)](https://github.com/xensexyq) [![Project Issues](https://img.shields.io/badge/Discuss-Project%20Issues-238636?logo=github&logoColor=white)](https://github.com/xensexyq/DAP-Downloader/issues)
