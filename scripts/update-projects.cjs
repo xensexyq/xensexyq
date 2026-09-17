@@ -7,7 +7,7 @@ function cell(value) {
     .replace(/[&<>|\\`*_[\]]/g, ch => `&#${ch.codePointAt(0)};`);
 }
 
-function render(repos, owner, language = 'zh') {
+function render(repos, owner, language = 'en') {
   const en = language === 'en';
   const eligible = repos.filter(repo => !repo.private && !repo.archived
     && repo.owner.login.toLowerCase() === owner.toLowerCase()
@@ -47,7 +47,7 @@ async function update({ github, context, core }) {
     username: owner, type: 'owner', sort: 'created', direction: 'desc', per_page: 100,
   });
   const changes = [];
-  for (const [path, language] of [['README.md', 'zh'], ['README.en.md', 'en']]) {
+  for (const [path, language] of [['README.md', 'en'], ['README.en.md', 'en']]) {
     const { data: file } = await github.rest.repos.getContent({ owner, repo, path, ref: branch });
     if (file.type !== 'file' || file.encoding !== 'base64') {
       throw new Error(`${path} is not a readable base64 file.`);
