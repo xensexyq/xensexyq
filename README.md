@@ -1,4 +1,6 @@
-## Hi there! I'm xensexyq 👋
+**中文** | [English](https://github.com/xensexyq/xensexyq/blob/main/README.en.md)
+
+## 你好，我是 xensexyq 👋
 
 **Robotics · Embedded Systems · Simulation**  
 机器人控制 · 嵌入式工具 · 仿真与工程实践
@@ -7,7 +9,7 @@
   <img align="right" width="390" src="https://github-stats-extended.vercel.app/api?username=xensexyq&show_icons=true&theme=buefy&include_all_commits=true" alt="xensexyq's GitHub statistics" />
 </a>
 
-### 👨‍💻 About Me
+### 👨‍💻 关于我
 
 - 🤖 关注机器人控制、机械臂仿真与软硬件协同。
 - 🔌 开发面向 STM32 的固件下载与调试工具。
@@ -20,7 +22,7 @@
   <img align="right" width="390" src="https://github-stats-extended.vercel.app/api/top-langs/?username=xensexyq&theme=buefy&layout=compact" alt="Most used languages in xensexyq's public repositories" />
 </a>
 
-### 🛠 Tech Stack
+### 🛠 技术栈
 
 - 💻 ![C++](https://img.shields.io/badge/C%2B%2B-333333?logo=cplusplus&logoColor=659AD2) ![Python](https://img.shields.io/badge/Python-333333?logo=python&logoColor=3776AB)
 - 🤖 ![Pinocchio](https://img.shields.io/badge/Pinocchio-333333) ![LeRobot](https://img.shields.io/badge/LeRobot-333333?logo=huggingface&logoColor=FFD21E) ![MeshCat](https://img.shields.io/badge/MeshCat-333333)
@@ -32,20 +34,20 @@
 
 <!-- PROJECTS:START -->
 
-### 🚀 Latest Projects
+### 🚀 最新项目
 
 最近创建的公开项目，按创建时间排序，每日自动更新。
 
-| Project | Description | Language |
+| 项目 | 描述 | 语言 |
 | :--- | :--- | :--- |
 | [DAP-Downloader](https://github.com/xensexyq/DAP-Downloader) | Windows CMSIS-DAP firmware downloader for STM32H5 | Python |
 | [fastiter-control-sim-win](https://github.com/xensexyq/fastiter-control-sim-win) | Native Windows support for FR3 Pinocchio C++ simulation | C++ |
 
-### 🌱 Latest Forks
+### 🌱 最近 Fork
 
 最近 fork 的公开项目；原项目与作者信息见各仓库。
 
-| Project | Description | Language |
+| 项目 | 描述 | 语言 |
 | :--- | :--- | :--- |
 | [TacCap-Gripper](https://github.com/xensexyq/TacCap-Gripper) | 暂无描述 | — |
 | [fastiter-control-sim](https://github.com/xensexyq/fastiter-control-sim) | 暂无描述 | C++ |
@@ -56,9 +58,9 @@
 
 <!-- PROJECTS:END -->
 
-### 🤝 Connect with Me
+### 🤝 联系我
 
-📧 Email: [nxuerobot@gmail.com](mailto:nxuerobot@gmail.com)
+📧 邮箱： [nxuerobot@gmail.com](mailto:nxuerobot@gmail.com)
 
 欢迎通过项目 Issues 交流机器人仿真、嵌入式工具与工程实践。
 
