@@ -30,6 +30,8 @@
 
 <br clear="both" />
 
+<!-- PROJECTS:START -->
+
 ### 🚀 Selected Projects
 
 | Project | Focus |
@@ -42,6 +44,8 @@
 [TacCap-Gripper](https://github.com/xensexyq/TacCap-Gripper) · [lerobot-xense](https://github.com/xensexyq/lerobot-xense) · [xense-taccap-lerobot](https://github.com/xensexyq/xense-taccap-lerobot) · [xense-openpi](https://github.com/xensexyq/xense-openpi)
 
 以上为上游项目的个人 fork；原项目与作者信息见各仓库。
+
+<!-- PROJECTS:END -->
 
 ### 🤝 Connect with Me
 
