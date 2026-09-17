@@ -1,5 +1,3 @@
-[中文](https://github.com/xensexyq) | **English**
-
 ## Hi there! I'm xensexyq 👋
 
 **Robotics · Embedded Systems · Simulation**  
