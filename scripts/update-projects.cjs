@@ -7,25 +7,26 @@ function cell(value) {
     .replace(/[&<>|\\`*_[\]]/g, ch => `&#${ch.codePointAt(0)};`);
 }
 
-function render(repos, owner) {
+function render(repos, owner, language = 'zh') {
+  const en = language === 'en';
   const eligible = repos.filter(repo => !repo.private && !repo.archived
     && repo.owner.login.toLowerCase() === owner.toLowerCase()
     && repo.name.toLowerCase() !== owner.toLowerCase())
     .sort((a, b) => b.created_at.localeCompare(a.created_at)
       || a.name.localeCompare(b.name, 'en'));
   const table = (items) => items.length ? [
-    '| Project | Description | Language |',
+    en ? '| Project | Description | Language |' : '| 项目 | 描述 | 语言 |',
     '| :--- | :--- | :--- |',
-    ...items.map(repo => `| [${cell(repo.name)}](https://github.com/${encodeURIComponent(owner)}/${encodeURIComponent(repo.name)}) | ${cell(repo.description) || '暂无描述'} | ${cell(repo.language) || '—'} |`),
-  ].join('\n') : '暂无符合条件的公开项目。';
+    ...items.map(repo => `| [${cell(repo.name)}](https://github.com/${encodeURIComponent(owner)}/${encodeURIComponent(repo.name)}) | ${cell(repo.description) || (en ? 'No description provided' : '暂无描述')} | ${cell(repo.language) || '—'} |`),
+  ].join('\n') : (en ? 'No matching public repositories yet.' : '暂无符合条件的公开项目。');
   return [
-    '### 🚀 Latest Projects', '',
-    '最近创建的公开项目，按创建时间排序，每日自动更新。', '',
+    en ? '### 🚀 Latest Projects' : '### 🚀 最新项目', '',
+    en ? 'Recently created public repositories, newest first. Updated daily.' : '最近创建的公开项目，按创建时间排序，每日自动更新。', '',
     table(eligible.filter(repo => !repo.fork).slice(0, 8)), '',
-    '### 🌱 Latest Forks', '',
-    '最近 fork 的公开项目；原项目与作者信息见各仓库。', '',
+    en ? '### 🌱 Latest Forks' : '### 🌱 最近 Fork', '',
+    en ? 'Recent public forks. See each repository for its upstream project and authors.' : '最近 fork 的公开项目；原项目与作者信息见各仓库。', '',
     table(eligible.filter(repo => repo.fork).slice(0, 4)), '',
-    `[查看全部仓库](https://github.com/${encodeURIComponent(owner)}?tab=repositories)`,
+    `[${en ? 'View all repositories' : '查看全部仓库'}](https://github.com/${encodeURIComponent(owner)}?tab=repositories)`,
   ].join('\n');
 }
 
@@ -45,25 +46,26 @@ async function update({ github, context, core }) {
   const repos = await github.paginate(github.rest.repos.listForUser, {
     username: owner, type: 'owner', sort: 'created', direction: 'desc', per_page: 100,
   });
-  const { data: file } = await github.rest.repos.getContent({
-    owner, repo, path: 'README.md', ref: branch,
-  });
-  if (file.type !== 'file' || file.encoding !== 'base64') {
-    throw new Error('README.md is not a readable base64 file.');
+  const changes = [];
+  for (const [path, language] of [['README.md', 'zh'], ['README.en.md', 'en']]) {
+    const { data: file } = await github.rest.repos.getContent({ owner, repo, path, ref: branch });
+    if (file.type !== 'file' || file.encoding !== 'base64') {
+      throw new Error(`${path} is not a readable base64 file.`);
+    }
+    const previous = Buffer.from(file.content, 'base64').toString('utf8');
+    const next = replaceSection(previous, render(repos, owner, language));
+    if (next !== previous) changes.push({ path, sha: file.sha, next });
   }
-  const previous = Buffer.from(file.content, 'base64').toString('utf8');
-  const next = replaceSection(previous, render(repos, owner));
-  if (next === previous) {
-    core.info('Project list unchanged; no commit needed.');
-    return;
+  // Validate both documents first; each file SHA protects concurrent edits.
+  for (const { path, sha, next } of changes) {
+    await github.rest.repos.createOrUpdateFileContents({
+      owner, repo, branch, path, sha,
+      message: `docs: refresh public projects in ${path} [skip ci]`,
+      content: Buffer.from(next, 'utf8').toString('base64'),
+    });
+    core.info(`Updated the project section of ${path}.`);
   }
-  // SHA protects against overwriting a concurrent README edit.
-  await github.rest.repos.createOrUpdateFileContents({
-    owner, repo, branch, path: 'README.md', sha: file.sha,
-    message: 'docs: refresh public projects [skip ci]',
-    content: Buffer.from(next, 'utf8').toString('base64'),
-  });
-  core.info('Updated the project section of README.md.');
+  if (!changes.length) core.info('Project lists unchanged; no commit needed.');
 }
 
 module.exports = update;
