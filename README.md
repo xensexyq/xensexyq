@@ -32,18 +32,27 @@
 
 <!-- PROJECTS:START -->
 
-### 🚀 Selected Projects
+### 🚀 Latest Projects
 
-| Project | Focus |
-| :--- | :--- |
-| [**DAP-Downloader**](https://github.com/xensexyq/DAP-Downloader) | 面向 STM32H5 的 Windows CMSIS-DAP 固件下载工具。 |
-| [**fastiter-control-sim-win**](https://github.com/xensexyq/fastiter-control-sim-win) | 为 FR3 / Pinocchio C++ 仿真补充原生 Windows 支持，基于 [上游项目](https://github.com/xensedyl/fastiter-control-sim) 开发。 |
+最近创建的公开项目，按创建时间排序，每日自动更新。
 
-### 🌱 Exploring & Contributing
+| Project | Description | Language |
+| :--- | :--- | :--- |
+| [DAP-Downloader](https://github.com/xensexyq/DAP-Downloader) | Windows CMSIS-DAP firmware downloader for STM32H5 | Python |
+| [fastiter-control-sim-win](https://github.com/xensexyq/fastiter-control-sim-win) | Native Windows support for FR3 Pinocchio C++ simulation | C++ |
 
-[TacCap-Gripper](https://github.com/xensexyq/TacCap-Gripper) · [lerobot-xense](https://github.com/xensexyq/lerobot-xense) · [xense-taccap-lerobot](https://github.com/xensexyq/xense-taccap-lerobot) · [xense-openpi](https://github.com/xensexyq/xense-openpi)
+### 🌱 Latest Forks
 
-以上为上游项目的个人 fork；原项目与作者信息见各仓库。
+最近 fork 的公开项目；原项目与作者信息见各仓库。
+
+| Project | Description | Language |
+| :--- | :--- | :--- |
+| [TacCap-Gripper](https://github.com/xensexyq/TacCap-Gripper) | 暂无描述 | — |
+| [fastiter-control-sim](https://github.com/xensexyq/fastiter-control-sim) | 暂无描述 | C++ |
+| [lerobot-xense](https://github.com/xensexyq/lerobot-xense) | XenseRobotics Physical-Ai Intelligence Platform | — |
+| [xense-openpi](https://github.com/xensexyq/xense-openpi) | 暂无描述 | — |
+
+[查看全部仓库](https://github.com/xensexyq?tab=repositories)
 
 <!-- PROJECTS:END -->
 
