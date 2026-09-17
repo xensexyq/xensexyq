@@ -32,27 +32,27 @@ Robot control · Embedded tools · Simulation and engineering
 
 <!-- PROJECTS:START -->
 
-### 🚀 Latest Projects
+### 🚀 最新项目
 
-Recently created public repositories, newest first. Updated daily.
+最近创建的公开项目，按创建时间排序，每日自动更新。
 
-| Project | Description | Language |
+| 项目 | 描述 | 语言 |
 | :--- | :--- | :--- |
 | [DAP-Downloader](https://github.com/xensexyq/DAP-Downloader) | Windows CMSIS-DAP firmware downloader for STM32H5 | Python |
 | [fastiter-control-sim-win](https://github.com/xensexyq/fastiter-control-sim-win) | Native Windows support for FR3 Pinocchio C++ simulation | C++ |
 
-### 🌱 Latest Forks
+### 🌱 最近 Fork
 
-Recent public forks. See each repository for its upstream project and authors.
+最近 fork 的公开项目；原项目与作者信息见各仓库。
 
-| Project | Description | Language |
+| 项目 | 描述 | 语言 |
 | :--- | :--- | :--- |
-| [TacCap-Gripper](https://github.com/xensexyq/TacCap-Gripper) | No description provided | — |
-| [fastiter-control-sim](https://github.com/xensexyq/fastiter-control-sim) | No description provided | C++ |
+| [TacCap-Gripper](https://github.com/xensexyq/TacCap-Gripper) | 暂无描述 | — |
+| [fastiter-control-sim](https://github.com/xensexyq/fastiter-control-sim) | 暂无描述 | C++ |
 | [lerobot-xense](https://github.com/xensexyq/lerobot-xense) | XenseRobotics Physical-Ai Intelligence Platform | — |
-| [xense-openpi](https://github.com/xensexyq/xense-openpi) | No description provided | — |
+| [xense-openpi](https://github.com/xensexyq/xense-openpi) | 暂无描述 | — |
 
-[View all repositories](https://github.com/xensexyq?tab=repositories)
+[查看全部仓库](https://github.com/xensexyq?tab=repositories)
 
 <!-- PROJECTS:END -->
 
