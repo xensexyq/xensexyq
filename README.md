@@ -4,7 +4,7 @@
 机器人控制 · 嵌入式工具 · 仿真与工程实践
 
 <a href="https://github.com/xensexyq">
-  <img align="right" width="390" src="https://github-stats-extended.vercel.app/api?username=xensexyq&show_icons=true&theme=github_dark&hide_border=true&hide_rank=true" alt="xensexyq's GitHub statistics" />
+  <img align="right" width="390" src="https://github-stats-extended.vercel.app/api?username=xensexyq&show_icons=true&theme=buefy&include_all_commits=true" alt="xensexyq's GitHub statistics" />
 </a>
 
 ### 👨‍💻 About Me
@@ -13,6 +13,12 @@
 - 🔌 开发面向 STM32 的固件下载与调试工具。
 - 💻 使用 C++ / Python 构建仿真接口和桌面工具。
 - 🌱 探索 LeRobot、触觉夹爪与具身智能相关项目。
+
+<br clear="right" />
+
+<a href="https://github.com/xensexyq?tab=repositories">
+  <img align="right" width="390" src="https://github-stats-extended.vercel.app/api/top-langs/?username=xensexyq&theme=buefy&layout=compact" alt="Most used languages in xensexyq's public repositories" />
+</a>
 
 ### 🛠 Tech Stack
 
