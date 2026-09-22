@@ -37,6 +37,12 @@ test('only marker section changes and reruns are idempotent', () => {
   assert.throws(() => replaceSection(readme + '<!-- PROJECTS:END -->', 'x'));
   assert.throws(() => replaceSection('<!-- PROJECTS:END --><!-- PROJECTS:START -->', 'x'));
 });
+test('the existing README line ending style is preserved', () => {
+  const crlfReadme = readme.replace(/\n/g, '\r\n');
+  const next = replaceSection(crlfReadme, 'line one\nline two');
+  assert.ok(next.includes('line one\r\nline two'));
+  assert.equal(next.replace(/\r\n/g, '').includes('\n'), false);
+});
 function mock(previous, fail = false) {
   const writes = [];
   return { writes, context: { repo: { owner, repo: owner }, payload: { repository: { default_branch: 'main' } } },

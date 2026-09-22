@@ -12,6 +12,7 @@ on:
       - 'tests/update-projects.test.cjs'
       - '.github/workflows/update-projects.yml'
       - 'README.md'
+      - 'README.en.md'
 
 # The ephemeral built-in token can update this profile repository only.
 permissions:

@@ -35,8 +35,10 @@ function replaceSection(readme, content) {
       || readme.indexOf(START) >= readme.indexOf(END)) {
     throw new Error('README must contain exactly one ordered PROJECTS marker pair.');
   }
+  const eol = readme.includes('\r\n') ? '\r\n' : '\n';
+  const normalizedContent = content.replace(/\r?\n/g, eol);
   return readme.slice(0, readme.indexOf(START) + START.length)
-    + '\n\n' + content + '\n\n' + readme.slice(readme.indexOf(END));
+    + eol + eol + normalizedContent + eol + eol + readme.slice(readme.indexOf(END));
 }
 
 async function update({ github, context, core }) {
