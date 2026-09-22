@@ -1,12 +1,14 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
 const update = require('../scripts/update-projects.cjs');
-const { render, replaceSection } = update;
+const { render, renderTechStack, replaceSection, replaceTechStack } = update;
 const owner = 'example';
 const repo = (name, extra = {}) => ({ name, owner: { login: owner },
   created_at: '2026-01-01T00:00:00Z', private: false, archived: false,
   fork: false, description: null, language: null, ...extra });
 const readme = 'INTRO\n<!-- PROJECTS:START -->\nold\n<!-- PROJECTS:END -->\nCONTACT';
+const document = 'INTRO\n<!-- TECH_STACK:START -->\nold stack\n<!-- TECH_STACK:END -->\n'
+  + '<!-- PROJECTS:START -->\nold projects\n<!-- PROJECTS:END -->\nCONTACT';
 
 test('new projects appear first; private, archived, foreign and profile repos are excluded', () => {
   const result = render([repo('old'), repo('new', { created_at: '2026-09-17T00:00:00Z' }),
@@ -31,6 +33,28 @@ test('metadata cannot inject HTML, Markdown images, or extra list items', () => 
   assert.ok(result.includes('&#124;'));
   assert.ok(result.includes('next &#38; &#42;bold&#42;'));
 });
+test('repository descriptions flow directly into the generated project list', () => {
+  const first = render([repo('demo', { description: 'First description' })], owner);
+  const second = render([repo('demo', { description: 'Updated description' })], owner);
+  assert.ok(first.includes('First description'));
+  assert.ok(second.includes('Updated description'));
+  assert.notEqual(first, second);
+});
+test('tech stack is detected from source repository languages, topics and descriptions', () => {
+  const result = renderTechStack([
+    repo('robot-app', { language: 'Python', topics: ['qt'],
+      description: 'Pinocchio control on Windows with STM32 and CMSIS-DAP' }),
+    repo('forked', { fork: true, language: 'Rust', topics: ['lerobot'] }),
+    repo('secret', { private: true, language: 'Go' }),
+  ], owner, 'en', ['CMake', 'Shell', 'Zig']);
+  for (const label of ['Python', 'Shell', 'Zig', 'Pinocchio', 'STM32', 'CMSIS-DAP', 'CMake', 'Qt', 'Windows']) {
+    assert.ok(result.includes(`alt="${label}"`));
+  }
+  for (const label of ['Rust', 'LeRobot', 'Go']) assert.ok(!result.includes(`alt="${label}"`));
+  const changed = renderTechStack([repo('rewritten', { language: 'Rust' })], owner);
+  assert.ok(changed.includes('alt="Rust"'));
+  assert.ok(!changed.includes('alt="Python"'));
+});
 test('only marker section changes and reruns are idempotent', () => {
   const next = replaceSection(readme, render([], owner));
   assert.ok(next.startsWith('INTRO\n<!-- PROJECTS:START -->'));
@@ -51,16 +75,17 @@ test('the existing README line ending style is preserved', () => {
   assert.ok(next.includes('line one\r\nline two'));
   assert.equal(next.replace(/\r\n/g, '').includes('\n'), false);
 });
-function mock(previous, fail = false) {
+function mock(previous, fail = false, repos = [], languageData = {}) {
   const writes = [];
   return { writes, context: { repo: { owner, repo: owner }, payload: { repository: { default_branch: 'main' } } },
-    core: { info() {} }, github: { paginate: async () => { if (fail) throw new Error('API unavailable'); return []; },
+    core: { info() {} }, github: { paginate: async () => { if (fail) throw new Error('API unavailable'); return repos; },
       rest: { repos: { listForUser() {}, getContent: async ({ path }) => ({ data: { type: 'file', encoding: 'base64',
         sha: 'current-sha', content: Buffer.from(typeof previous === 'string' ? previous : previous[path]).toString('base64') } }),
+      listLanguages: async ({ repo: name }) => ({ data: languageData[name] || {} }),
       createOrUpdateFileContents: async data => writes.push(data) } } } };
 }
 test('API writes both language READMEs on default branch with concurrency protection', async () => {
-  const env = mock(readme); await update(env);
+  const env = mock(document); await update(env);
   assert.equal(env.writes.length, 2);
   assert.equal(env.writes[0].path, 'README.md');
   assert.equal(env.writes[0].sha, 'current-sha');
@@ -68,11 +93,20 @@ test('API writes both language READMEs on default branch with concurrency protec
   assert.equal(env.writes[1].path, 'README.en.md');
   assert.ok(Buffer.from(env.writes[1].content, 'base64').toString('utf8').includes('View all projects'));
 });
+test('API language inventories feed the generated tech stack', async () => {
+  const env = mock(document, false, [repo('demo', { language: 'Python' })],
+    { demo: { Python: 1200, CMake: 300 } });
+  await update(env);
+  const content = Buffer.from(env.writes[0].content, 'base64').toString('utf8');
+  assert.ok(content.includes('alt="Python"'));
+  assert.ok(content.includes('alt="CMake"'));
+});
 test('unchanged content or failed API never writes', async () => {
-  const env = mock({ 'README.md': replaceSection(readme, render([], owner)),
-    'README.en.md': replaceSection(readme, render([], owner, 'en')) }); await update(env);
+  const current = language => replaceTechStack(
+    replaceSection(document, render([], owner, language)), renderTechStack([], owner, language));
+  const env = mock({ 'README.md': current('en'), 'README.en.md': current('en') }); await update(env);
   assert.equal(env.writes.length, 0);
-  const failed = mock(readme, true);
+  const failed = mock(document, true);
   await assert.rejects(update(failed), /API unavailable/);
   assert.equal(failed.writes.length, 0);
 });
@@ -83,7 +117,12 @@ test('English labels are translated while repository descriptions remain verbati
   assert.ok(!result.includes('暂无描述'));
 });
 test('invalid English markers prevent all writes', async () => {
-  const env = mock({ 'README.md': readme, 'README.en.md': 'missing markers' });
+  const env = mock({ 'README.md': document, 'README.en.md': 'missing markers' });
   await assert.rejects(update(env), /marker pair/);
+  assert.equal(env.writes.length, 0);
+});
+test('missing tech stack markers prevent all writes', async () => {
+  const env = mock({ 'README.md': document, 'README.en.md': readme });
+  await assert.rejects(update(env), /TECH_STACK marker pair/);
   assert.equal(env.writes.length, 0);
 });
