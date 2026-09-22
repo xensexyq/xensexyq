@@ -12,16 +12,18 @@ test('new projects appear first; private, archived, foreign and profile repos ar
   const result = render([repo('old'), repo('new', { created_at: '2026-09-17T00:00:00Z' }),
     repo('secret', { private: true }), repo('archived', { archived: true }),
     repo('foreign', { owner: { login: 'someone' } }), repo('EXAMPLE')], owner);
-  assert.ok(result.indexOf('[new]') < result.indexOf('[old]'));
-  for (const name of ['secret', 'archived', 'foreign', 'EXAMPLE']) assert.ok(!result.includes(`[${name}]`));
+  assert.ok(result.indexOf('<strong>new</strong>') < result.indexOf('<strong>old</strong>'));
+  for (const name of ['secret', 'archived', 'foreign', 'EXAMPLE']) {
+    assert.ok(!result.includes(`<strong>${name}</strong>`));
+  }
 });
 test('separate limits for projects and forks', () => {
   const result = render(Array.from({ length: 12 }, (_, i) => repo(`project${i}`))
     .concat(Array.from({ length: 7 }, (_, i) => repo(`fork${i}`, { fork: true }))), owner);
-  assert.equal((result.match(/\| \[project/g) || []).length, 8);
-  assert.equal((result.match(/\| \[fork/g) || []).length, 4);
+  assert.equal((result.match(/<strong>project/g) || []).length, 4);
+  assert.equal((result.match(/<strong>fork/g) || []).length, 4);
 });
-test('metadata cannot inject HTML, Markdown images, or extra table rows', () => {
+test('metadata cannot inject HTML, Markdown images, or extra list items', () => {
   const result = render([repo('demo', { description: '<img> | ![x](url)\nnext & *bold*' })], owner);
   assert.ok(!result.includes('<img>'));
   assert.ok(!result.includes('![x]'));
@@ -71,7 +73,6 @@ test('unchanged content or failed API never writes', async () => {
 test('English labels are translated while repository descriptions remain verbatim', () => {
   const result = render([repo('described', { description: '中文项目' }), repo('empty')], owner, 'en');
   assert.ok(result.includes('中文项目'));
-  assert.ok(result.includes('No description provided'));
   assert.ok(result.includes('Latest Projects'));
   assert.ok(!result.includes('暂无描述'));
 });

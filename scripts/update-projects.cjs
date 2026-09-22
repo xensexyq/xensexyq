@@ -14,19 +14,28 @@ function render(repos, owner, language = 'en') {
     && repo.name.toLowerCase() !== owner.toLowerCase())
     .sort((a, b) => b.created_at.localeCompare(a.created_at)
       || a.name.localeCompare(b.name, 'en'));
-  const table = (items) => items.length ? [
-    en ? '| Project | Description | Language |' : '| 项目 | 描述 | 语言 |',
-    '| :--- | :--- | :--- |',
-    ...items.map(repo => `| [${cell(repo.name)}](https://github.com/${encodeURIComponent(owner)}/${encodeURIComponent(repo.name)}) | ${cell(repo.description) || (en ? 'No description provided' : '暂无描述')} | ${cell(repo.language) || '—'} |`),
-  ].join('\n') : (en ? 'No matching public repositories yet.' : '暂无符合条件的公开项目。');
+  const list = (items) => items.length ? [
+    '<ul>',
+    ...items.map(repo => {
+      const languageLabel = cell(repo.language);
+      const description = cell(repo.description);
+      return [
+        '  <li>',
+        `    <a href="https://github.com/${encodeURIComponent(owner)}/${encodeURIComponent(repo.name)}"><strong>${cell(repo.name)}</strong></a>${languageLabel ? ` · <code>${languageLabel}</code>` : ''}`,
+        ...(description ? [`    <br /><sub>${description}</sub>`] : []),
+        '  </li>',
+      ].join('\n');
+    }),
+    '</ul>',
+  ].join('\n') : `<p><sub>${en ? 'No matching public repositories yet.' : '暂无符合条件的公开项目。'}</sub></p>`;
   return [
-    en ? '### 🚀 Latest Projects' : '### 🚀 最新项目', '',
-    en ? 'Recently created public repositories, newest first. Updated daily.' : '最近创建的公开项目，按创建时间排序，每日自动更新。', '',
-    table(eligible.filter(repo => !repo.fork).slice(0, 8)), '',
-    en ? '### 🌱 Latest Forks' : '### 🌱 最近 Fork', '',
-    en ? 'Recent public forks. See each repository for its upstream project and authors.' : '最近 fork 的公开项目；原项目与作者信息见各仓库。', '',
-    table(eligible.filter(repo => repo.fork).slice(0, 4)), '',
-    `[${en ? 'View all repositories' : '查看全部仓库'}](https://github.com/${encodeURIComponent(owner)}?tab=repositories)`,
+    en ? '<h3>🚀 Latest Projects</h3>' : '<h3>🚀 最新项目</h3>',
+    `<p><sub>${en ? 'Newest public repositories · updated daily' : '最新公开项目 · 每日自动更新'}</sub></p>`,
+    list(eligible.filter(repo => !repo.fork).slice(0, 4)),
+    en ? '<h3>🌱 Latest Forks</h3>' : '<h3>🌱 最近 Fork</h3>',
+    `<p><sub>${en ? 'Recent public forks and their upstream projects' : '最近公开 Fork 及其上游项目'}</sub></p>`,
+    list(eligible.filter(repo => repo.fork).slice(0, 4)),
+    `<p align="right"><a href="https://github.com/${encodeURIComponent(owner)}?tab=repositories">${en ? 'View all repositories →' : '查看全部仓库 →'}</a></p>`,
   ].join('\n');
 }
 
