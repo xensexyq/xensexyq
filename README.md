@@ -30,33 +30,6 @@ Robot control · Embedded tools · Simulation and engineering
 
 <br clear="both" />
 
-<!-- PROJECTS:START -->
-
-### 🚀 Latest Projects
-
-Recently created public repositories, newest first. Updated daily.
-
-| Project | Description | Language |
-| :--- | :--- | :--- |
-| [DAP-Downloader](https://github.com/xensexyq/DAP-Downloader) | Windows CMSIS-DAP firmware downloader for STM32H5 | Python |
-| [fastiter-control-sim](https://github.com/xensexyq/fastiter-control-sim) | No description provided | C++ |
-| [fastiter-control-sim-win](https://github.com/xensexyq/fastiter-control-sim-win) | Native Windows support for FR3 Pinocchio C++ simulation | C++ |
-
-### 🌱 Latest Forks
-
-Recent public forks. See each repository for its upstream project and authors.
-
-| Project | Description | Language |
-| :--- | :--- | :--- |
-| [TacCap-Gripper](https://github.com/xensexyq/TacCap-Gripper) | No description provided | — |
-| [lerobot-xense](https://github.com/xensexyq/lerobot-xense) | XenseRobotics Physical-Ai Intelligence Platform | — |
-| [xense-openpi](https://github.com/xensexyq/xense-openpi) | No description provided | — |
-| [xense-taccap-lerobot](https://github.com/xensexyq/xense-taccap-lerobot) | No description provided | — |
-
-[View all repositories](https://github.com/xensexyq?tab=repositories)
-
-<!-- PROJECTS:END -->
-
 ### 🤝 Connect with Me
 
 📧 Email: [nxuerobot@gmail.com](mailto:nxuerobot@gmail.com)
