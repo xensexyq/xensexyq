@@ -34,22 +34,11 @@ Robot control · Embedded tools · Simulation and engineering
         <img width="100%" src="https://github-stats-extended.vercel.app/api/top-langs/?username=xensexyq&amp;theme=buefy&amp;layout=compact" alt="Most used languages in xensexyq's public repositories" />
       </a>
 <!-- PROJECTS:START -->
-<h3>🚀 Latest Projects</h3>
-<p><sub>Newest public repositories · updated daily</sub></p>
-<ul>
-  <li>
-    <a href="https://github.com/xensexyq/DAP-Downloader"><strong>DAP-Downloader</strong></a> · <code>Python</code>
-    <br /><sub>Windows CMSIS-DAP firmware downloader for STM32H5</sub>
-  </li>
-  <li>
-    <a href="https://github.com/xensexyq/fastiter-control-sim"><strong>fastiter-control-sim</strong></a> · <code>C++</code>
-  </li>
-  <li>
-    <a href="https://github.com/xensexyq/fastiter-control-sim-win"><strong>fastiter-control-sim-win</strong></a> · <code>C++</code>
-    <br /><sub>Native Windows support for FR3 Pinocchio C++ simulation</sub>
-  </li>
-</ul>
-<p align="right"><a href="https://github.com/xensexyq?tab=repositories&amp;type=source">View all projects →</a></p>
+<h3>🚀 Latest Projects <sub>daily · <a href="https://github.com/xensexyq?tab=repositories&amp;type=source">All →</a></sub></h3>
+<p>
+  &bull; <a href="https://github.com/xensexyq/DAP-Downloader" title="Windows CMSIS-DAP firmware downloader for STM32H5"><strong>DAP-Downloader</strong></a> · <code>Python</code> &nbsp;&nbsp; &bull; <a href="https://github.com/xensexyq/fastiter-control-sim"><strong>fastiter-control-sim</strong></a> · <code>C++</code><br />
+  &bull; <a href="https://github.com/xensexyq/fastiter-control-sim-win" title="Native Windows support for FR3 Pinocchio C++ simulation"><strong>fastiter-control-sim-win</strong></a> · <code>C++</code>
+</p>
 <!-- PROJECTS:END -->
 </td>
 </tr>

@@ -22,9 +22,12 @@ test('new projects appear first; private, archived, foreign and profile repos ar
 test('only original projects are shown and the compact list is limited', () => {
   const result = render(Array.from({ length: 12 }, (_, i) => repo(`project${i}`))
     .concat(Array.from({ length: 7 }, (_, i) => repo(`fork${i}`, { fork: true }))), owner);
-  assert.equal((result.match(/<strong>project/g) || []).length, 4);
+  assert.equal((result.match(/<strong>project/g) || []).length, 3);
   assert.equal((result.match(/<strong>fork/g) || []).length, 0);
   assert.ok(!result.includes('Latest Forks'));
+  assert.ok(!result.includes('<ul>'));
+  assert.ok(result.includes('daily ·'));
+  assert.equal((result.match(/<br \/>/g) || []).length, 1);
 });
 test('metadata cannot inject HTML, Markdown images, or extra list items', () => {
   const result = render([repo('demo', { description: '<img> | ![x](url)\nnext & *bold*' })], owner);
@@ -36,8 +39,8 @@ test('metadata cannot inject HTML, Markdown images, or extra list items', () => 
 test('repository descriptions flow directly into the generated project list', () => {
   const first = render([repo('demo', { description: 'First description' })], owner);
   const second = render([repo('demo', { description: 'Updated description' })], owner);
-  assert.ok(first.includes('First description'));
-  assert.ok(second.includes('Updated description'));
+  assert.ok(first.includes('title="First description"'));
+  assert.ok(second.includes('title="Updated description"'));
   assert.notEqual(first, second);
 });
 test('tech stack is detected from source repository languages, topics and descriptions', () => {
@@ -94,7 +97,7 @@ test('API writes both language READMEs on default branch with concurrency protec
   assert.equal(env.writes[0].sha, 'current-sha');
   assert.equal(env.writes[0].branch, 'main');
   assert.equal(env.writes[1].path, 'README.en.md');
-  assert.ok(Buffer.from(env.writes[1].content, 'base64').toString('utf8').includes('View all projects'));
+  assert.ok(Buffer.from(env.writes[1].content, 'base64').toString('utf8').includes('All →'));
 });
 test('API language inventories and README metadata feed the generated tech stack', async () => {
   const env = mock(document, false, [repo('demo', { language: 'Python' })],

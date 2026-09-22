@@ -56,25 +56,27 @@ function render(repos, owner, language = 'en') {
   const eligible = eligibleRepos(repos, owner)
     .sort((a, b) => b.created_at.localeCompare(a.created_at)
       || a.name.localeCompare(b.name, 'en'));
-  const list = (items) => items.length ? [
-    '<ul>',
-    ...items.map(repo => {
+  const list = (items) => {
+    if (!items.length) {
+      return `<p><sub>${en ? 'No matching public repositories yet.' : '暂无符合条件的公开项目。'}</sub></p>`;
+    }
+    const projects = items.map(repo => {
       const languageLabel = cell(repo.language);
       const description = cell(repo.description);
-      return [
-        '  <li>',
-        `    <a href="https://github.com/${encodeURIComponent(owner)}/${encodeURIComponent(repo.name)}"><strong>${cell(repo.name)}</strong></a>${languageLabel ? ` · <code>${languageLabel}</code>` : ''}`,
-        ...(description ? [`    <br /><sub>${description}</sub>`] : []),
-        '  </li>',
-      ].join('\n');
-    }),
-    '</ul>',
-  ].join('\n') : `<p><sub>${en ? 'No matching public repositories yet.' : '暂无符合条件的公开项目。'}</sub></p>`;
+      return `&bull; <a href="https://github.com/${encodeURIComponent(owner)}/${encodeURIComponent(repo.name)}"${description ? ` title="${description}"` : ''}><strong>${cell(repo.name)}</strong></a>${languageLabel ? ` · <code>${languageLabel}</code>` : ''}`;
+    });
+    const rows = [];
+    for (let index = 0; index < projects.length; index += 2) {
+      rows.push(`  ${projects.slice(index, index + 2).join(' &nbsp;&nbsp; ')}${index + 2 < projects.length ? '<br />' : ''}`);
+    }
+    return ['<p>', ...rows, '</p>'].join('\n');
+  };
+  const allProjects = `https://github.com/${encodeURIComponent(owner)}?tab=repositories&amp;type=source`;
   return [
-    en ? '<h3>🚀 Latest Projects</h3>' : '<h3>🚀 最新项目</h3>',
-    `<p><sub>${en ? 'Newest public repositories · updated daily' : '最新公开项目 · 每日自动更新'}</sub></p>`,
-    list(eligible.filter(repo => !repo.fork).slice(0, 4)),
-    `<p align="right"><a href="https://github.com/${encodeURIComponent(owner)}?tab=repositories&amp;type=source">${en ? 'View all projects →' : '查看全部项目 →'}</a></p>`,
+    en
+      ? `<h3>🚀 Latest Projects <sub>daily · <a href="${allProjects}">All →</a></sub></h3>`
+      : `<h3>🚀 最新项目 <sub>每日更新 · <a href="${allProjects}">全部 →</a></sub></h3>`,
+    list(eligible.filter(repo => !repo.fork).slice(0, 3)),
   ].join('\n');
 }
 
