@@ -14,8 +14,6 @@ Robot control · Embedded tools · Simulation and engineering
 - 💻 Using C++ and Python to build simulation interfaces and desktop tools.
 - 🌱 Exploring LeRobot, tactile grippers, and embodied AI.
 
-<br clear="right" />
-
 <a href="https://github.com/xensexyq?tab=repositories">
   <img align="right" width="390" src="https://github-stats-extended.vercel.app/api/top-langs/?username=xensexyq&theme=buefy&layout=compact" alt="Most used languages in xensexyq's public repositories" />
 </a>
@@ -27,8 +25,6 @@ Robot control · Embedded tools · Simulation and engineering
 - 🔌 ![STM32](https://img.shields.io/badge/STM32-333333?logo=stmicroelectronics&logoColor=39A9DC) ![CMSIS-DAP](https://img.shields.io/badge/CMSIS--DAP-333333?logo=arm&logoColor=0091BD)
 - ⚙️ ![CMake](https://img.shields.io/badge/CMake-333333?logo=cmake&logoColor=64B54E) ![pybind11](https://img.shields.io/badge/pybind11-333333) ![Git](https://img.shields.io/badge/Git-333333?logo=git&logoColor=F05032)
 - 🖥 ![Qt](https://img.shields.io/badge/Qt-333333?logo=qt&logoColor=41CD52) ![Windows](https://img.shields.io/badge/Windows-333333) ![Linux](https://img.shields.io/badge/Linux-333333?logo=linux&logoColor=FCC624)
-
-<br clear="both" />
 
 ### 🤝 Connect with Me
 
