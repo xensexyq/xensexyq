@@ -1,8 +1,5 @@
 ## Hi there! I'm xensexyq 👋
 
-**Robotics · Embedded Systems · Simulation**  
-Robot control · Embedded tools · Simulation and engineering
-
 <a href="https://github.com/xensexyq">
   <img align="right" width="390" src="https://github-stats-extended.vercel.app/api?username=xensexyq&show_icons=true&theme=buefy&include_all_commits=true" alt="xensexyq's GitHub statistics" />
 </a>
