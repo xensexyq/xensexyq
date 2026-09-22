@@ -30,6 +30,4 @@ Robot control · Embedded tools · Simulation and engineering
 
 📧 Email: [nxuerobot@gmail.com](mailto:nxuerobot@gmail.com)
 
-Feel free to discuss robot simulation, embedded tools, and engineering in project Issues.
-
 [![GitHub](https://img.shields.io/badge/GitHub-xensexyq-181717?logo=github)](https://github.com/xensexyq) [![Project Issues](https://img.shields.io/badge/Discuss-Project%20Issues-238636?logo=github&logoColor=white)](https://github.com/xensexyq/DAP-Downloader/issues)
