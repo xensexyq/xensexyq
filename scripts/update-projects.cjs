@@ -32,10 +32,7 @@ function render(repos, owner, language = 'en') {
     en ? '<h3>🚀 Latest Projects</h3>' : '<h3>🚀 最新项目</h3>',
     `<p><sub>${en ? 'Newest public repositories · updated daily' : '最新公开项目 · 每日自动更新'}</sub></p>`,
     list(eligible.filter(repo => !repo.fork).slice(0, 4)),
-    en ? '<h3>🌱 Latest Forks</h3>' : '<h3>🌱 最近 Fork</h3>',
-    `<p><sub>${en ? 'Recent public forks and their upstream projects' : '最近公开 Fork 及其上游项目'}</sub></p>`,
-    list(eligible.filter(repo => repo.fork).slice(0, 4)),
-    `<p align="right"><a href="https://github.com/${encodeURIComponent(owner)}?tab=repositories">${en ? 'View all repositories →' : '查看全部仓库 →'}</a></p>`,
+    `<p align="right"><a href="https://github.com/${encodeURIComponent(owner)}?tab=repositories&amp;type=source">${en ? 'View all projects →' : '查看全部项目 →'}</a></p>`,
   ].join('\n');
 }
 
@@ -47,7 +44,7 @@ function replaceSection(readme, content) {
   const eol = readme.includes('\r\n') ? '\r\n' : '\n';
   const normalizedContent = content.replace(/\r?\n/g, eol);
   return readme.slice(0, readme.indexOf(START) + START.length)
-    + eol + eol + normalizedContent + eol + eol + readme.slice(readme.indexOf(END));
+    + eol + normalizedContent + eol + readme.slice(readme.indexOf(END));
 }
 
 async function update({ github, context, core }) {

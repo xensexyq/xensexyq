@@ -17,11 +17,12 @@ test('new projects appear first; private, archived, foreign and profile repos ar
     assert.ok(!result.includes(`<strong>${name}</strong>`));
   }
 });
-test('separate limits for projects and forks', () => {
+test('only original projects are shown and the compact list is limited', () => {
   const result = render(Array.from({ length: 12 }, (_, i) => repo(`project${i}`))
     .concat(Array.from({ length: 7 }, (_, i) => repo(`fork${i}`, { fork: true }))), owner);
   assert.equal((result.match(/<strong>project/g) || []).length, 4);
-  assert.equal((result.match(/<strong>fork/g) || []).length, 4);
+  assert.equal((result.match(/<strong>fork/g) || []).length, 0);
+  assert.ok(!result.includes('Latest Forks'));
 });
 test('metadata cannot inject HTML, Markdown images, or extra list items', () => {
   const result = render([repo('demo', { description: '<img> | ![x](url)\nnext & *bold*' })], owner);
@@ -38,6 +39,11 @@ test('only marker section changes and reruns are idempotent', () => {
   assert.throws(() => replaceSection('no markers', 'x'));
   assert.throws(() => replaceSection(readme + '<!-- PROJECTS:END -->', 'x'));
   assert.throws(() => replaceSection('<!-- PROJECTS:END --><!-- PROJECTS:START -->', 'x'));
+});
+test('replacement stays contiguous inside an HTML table cell', () => {
+  const html = `<table>\n<td>\n${readme}\n</td>\n</table>`;
+  const next = replaceSection(html, '<h3>Projects</h3>');
+  assert.ok(next.includes('<td>\nINTRO\n<!-- PROJECTS:START -->\n<h3>Projects</h3>\n<!-- PROJECTS:END -->\nCONTACT\n</td>'));
 });
 test('the existing README line ending style is preserved', () => {
   const crlfReadme = readme.replace(/\n/g, '\r\n');
@@ -60,7 +66,7 @@ test('API writes both language READMEs on default branch with concurrency protec
   assert.equal(env.writes[0].sha, 'current-sha');
   assert.equal(env.writes[0].branch, 'main');
   assert.equal(env.writes[1].path, 'README.en.md');
-  assert.ok(Buffer.from(env.writes[1].content, 'base64').toString('utf8').includes('View all repositories'));
+  assert.ok(Buffer.from(env.writes[1].content, 'base64').toString('utf8').includes('View all projects'));
 });
 test('unchanged content or failed API never writes', async () => {
   const env = mock({ 'README.md': replaceSection(readme, render([], owner)),
