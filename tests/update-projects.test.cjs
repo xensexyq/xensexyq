@@ -27,7 +27,7 @@ test('only original projects are shown and the compact list is limited', () => {
   assert.ok(!result.includes('Latest Forks'));
   assert.ok(!result.includes('<ul>'));
   assert.ok(result.includes('daily ·'));
-  assert.equal((result.match(/<br \/>/g) || []).length, 1);
+  assert.equal((result.match(/<br \/>/g) || []).length, 2);
 });
 test('metadata cannot inject HTML, Markdown images, or extra list items', () => {
   const result = render([repo('demo', { description: '<img> | ![x](url)\nnext & *bold*' })], owner);

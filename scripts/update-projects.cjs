@@ -65,10 +65,8 @@ function render(repos, owner, language = 'en') {
       const description = cell(repo.description);
       return `&bull; <a href="https://github.com/${encodeURIComponent(owner)}/${encodeURIComponent(repo.name)}"${description ? ` title="${description}"` : ''}><strong>${cell(repo.name)}</strong></a>${languageLabel ? ` · <code>${languageLabel}</code>` : ''}`;
     });
-    const rows = [];
-    for (let index = 0; index < projects.length; index += 2) {
-      rows.push(`  ${projects.slice(index, index + 2).join(' &nbsp;&nbsp; ')}${index + 2 < projects.length ? '<br />' : ''}`);
-    }
+    const rows = projects.map((project, index) =>
+      `  ${project}${index < projects.length - 1 ? '<br />' : ''}`);
     return ['<p>', ...rows, '</p>'].join('\n');
   };
   const allProjects = `https://github.com/${encodeURIComponent(owner)}?tab=repositories&amp;type=source`;

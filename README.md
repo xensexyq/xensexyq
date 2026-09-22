@@ -33,7 +33,8 @@
 <!-- PROJECTS:START -->
 <h3>🚀 Latest Projects <sub>daily · <a href="https://github.com/xensexyq?tab=repositories&amp;type=source">All →</a></sub></h3>
 <p>
-  &bull; <a href="https://github.com/xensexyq/DAP-Downloader" title="Windows CMSIS-DAP firmware downloader for STM32H5"><strong>DAP-Downloader</strong></a> · <code>Python</code> &nbsp;&nbsp; &bull; <a href="https://github.com/xensexyq/fastiter-control-sim"><strong>fastiter-control-sim</strong></a> · <code>C++</code><br />
+  &bull; <a href="https://github.com/xensexyq/DAP-Downloader" title="Windows CMSIS-DAP firmware downloader for STM32H5"><strong>DAP-Downloader</strong></a> · <code>Python</code><br />
+  &bull; <a href="https://github.com/xensexyq/fastiter-control-sim"><strong>fastiter-control-sim</strong></a> · <code>C++</code><br />
   &bull; <a href="https://github.com/xensexyq/fastiter-control-sim-win" title="Native Windows support for FR3 Pinocchio C++ simulation"><strong>fastiter-control-sim-win</strong></a> · <code>C++</code>
 </p>
 <!-- PROJECTS:END -->
