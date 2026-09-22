@@ -46,11 +46,12 @@ test('tech stack is detected from source repository languages, topics and descri
       description: 'Pinocchio control on Windows with STM32 and CMSIS-DAP' }),
     repo('forked', { fork: true, language: 'Rust', topics: ['lerobot'] }),
     repo('secret', { private: true, language: 'Go' }),
-  ], owner, 'en', ['CMake', 'Shell', 'Zig']);
-  for (const label of ['Python', 'Shell', 'Zig', 'Pinocchio', 'STM32', 'CMSIS-DAP', 'CMake', 'Qt', 'Windows']) {
+  ], owner, 'en', ['CMake', 'Shell', 'Zig'], ['MeshCat pybind11 git clone Linux with PySide6']);
+  for (const label of ['Python', 'Shell', 'Zig', 'Pinocchio', 'LeRobot', 'MeshCat',
+    'STM32', 'CMSIS-DAP', 'CMake', 'pybind11', 'Git', 'Qt', 'Windows', 'Linux']) {
     assert.ok(result.includes(`alt="${label}"`));
   }
-  for (const label of ['Rust', 'LeRobot', 'Go']) assert.ok(!result.includes(`alt="${label}"`));
+  for (const label of ['Rust', 'Go']) assert.ok(!result.includes(`alt="${label}"`));
   const changed = renderTechStack([repo('rewritten', { language: 'Rust' })], owner);
   assert.ok(changed.includes('alt="Rust"'));
   assert.ok(!changed.includes('alt="Python"'));
@@ -75,13 +76,15 @@ test('the existing README line ending style is preserved', () => {
   assert.ok(next.includes('line one\r\nline two'));
   assert.equal(next.replace(/\r\n/g, '').includes('\n'), false);
 });
-function mock(previous, fail = false, repos = [], languageData = {}) {
+function mock(previous, fail = false, repos = [], languageData = {}, readmeData = {}) {
   const writes = [];
   return { writes, context: { repo: { owner, repo: owner }, payload: { repository: { default_branch: 'main' } } },
     core: { info() {} }, github: { paginate: async () => { if (fail) throw new Error('API unavailable'); return repos; },
       rest: { repos: { listForUser() {}, getContent: async ({ path }) => ({ data: { type: 'file', encoding: 'base64',
         sha: 'current-sha', content: Buffer.from(typeof previous === 'string' ? previous : previous[path]).toString('base64') } }),
       listLanguages: async ({ repo: name }) => ({ data: languageData[name] || {} }),
+      getReadme: async ({ repo: name }) => ({ data: { encoding: 'base64',
+        content: Buffer.from(readmeData[name] || '').toString('base64') } }),
       createOrUpdateFileContents: async data => writes.push(data) } } } };
 }
 test('API writes both language READMEs on default branch with concurrency protection', async () => {
@@ -93,13 +96,16 @@ test('API writes both language READMEs on default branch with concurrency protec
   assert.equal(env.writes[1].path, 'README.en.md');
   assert.ok(Buffer.from(env.writes[1].content, 'base64').toString('utf8').includes('View all projects'));
 });
-test('API language inventories feed the generated tech stack', async () => {
+test('API language inventories and README metadata feed the generated tech stack', async () => {
   const env = mock(document, false, [repo('demo', { language: 'Python' })],
-    { demo: { Python: 1200, CMake: 300 } });
+    { demo: { Python: 1200, CMake: 300 } }, { demo: 'MeshCat with pybind11 on Linux' });
   await update(env);
   const content = Buffer.from(env.writes[0].content, 'base64').toString('utf8');
   assert.ok(content.includes('alt="Python"'));
   assert.ok(content.includes('alt="CMake"'));
+  assert.ok(content.includes('alt="MeshCat"'));
+  assert.ok(content.includes('alt="pybind11"'));
+  assert.ok(content.includes('alt="Linux"'));
 });
 test('unchanged content or failed API never writes', async () => {
   const current = language => replaceTechStack(

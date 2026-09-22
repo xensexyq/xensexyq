@@ -31,6 +31,7 @@ const STACK_GROUPS = [
   { icon: '⚙️', items: [
     { label: 'CMake', src: 'https://img.shields.io/badge/CMake-333333?logo=cmake&amp;logoColor=64B54E', signals: ['cmake'], keywords: ['cmake'] },
     { label: 'pybind11', src: 'https://img.shields.io/badge/pybind11-333333', signals: ['pybind11'], keywords: ['pybind11'] },
+    { label: 'Git', src: 'https://img.shields.io/badge/Git-333333?logo=git&amp;logoColor=F05032', signals: ['git'], keywords: ['git clone'] },
   ] },
   { icon: '🖥', items: [
     { label: 'Qt', src: 'https://img.shields.io/badge/Qt-333333?logo=qt&amp;logoColor=41CD52', signals: ['qt'], keywords: ['pyqt', 'pyside', 'qt5', 'qt6'] },
@@ -77,20 +78,22 @@ function render(repos, owner, language = 'en') {
   ].join('\n');
 }
 
-function renderTechStack(repos, owner, language = 'en', repositoryLanguages = []) {
+function renderTechStack(repos, owner, language = 'en', repositoryLanguages = [], repositoryTexts = []) {
   const en = language === 'en';
   const sourceRepos = eligibleRepos(repos, owner).filter(repo => !repo.fork);
   const languages = new Map(repositoryLanguages.map(value => [value.toLowerCase(), value]));
   const signals = new Set(languages.keys());
-  const searchable = sourceRepos.map(repo => {
+  for (const repo of sourceRepos) {
     if (repo.language) {
       signals.add(repo.language.toLowerCase());
       languages.set(repo.language.toLowerCase(), repo.language);
     }
+  }
+  const searchable = eligibleRepos(repos, owner).map(repo => {
     for (const topic of repo.topics || []) signals.add(topic.toLowerCase());
     return [repo.name, repo.description, repo.language, ...(repo.topics || [])]
       .filter(Boolean).join(' ').toLowerCase();
-  }).join(' ');
+  }).concat(repositoryTexts).join(' ').toLowerCase();
   const rows = STACK_GROUPS.map(group => ({
     icon: group.icon,
     items: group.items.filter(item => (item.signals || []).some(signal => signals.has(signal))
@@ -114,7 +117,6 @@ function renderTechStack(repos, owner, language = 'en', repositoryLanguages = []
   ] : [`<p><sub>${en ? 'No stack metadata detected yet.' : '暂未检测到技术栈元数据。'}</sub></p>`];
   return [
     en ? '<h3>🛠 Tech Stack</h3>' : '<h3>🛠 技术栈</h3>',
-    `<p><sub>${en ? 'Detected from public projects · updated daily' : '基于公开项目自动识别 · 每日更新'}</sub></p>`,
     ...content,
   ].join('\n');
 }
@@ -146,12 +148,23 @@ async function update({ github, context, core }) {
     username: owner, type: 'owner', sort: 'created', direction: 'desc', per_page: 100,
   });
   const repositoryLanguages = new Set();
+  const repositoryTexts = [];
   await Promise.all(eligibleRepos(repos, owner).filter(repository => !repository.fork)
     .map(async repository => {
       const { data: languages } = await github.rest.repos.listLanguages({
         owner, repo: repository.name,
       });
       for (const language of Object.keys(languages)) repositoryLanguages.add(language);
+      try {
+        const { data: readme } = await github.rest.repos.getReadme({
+          owner, repo: repository.name,
+        });
+        if (readme.encoding === 'base64' && typeof readme.content === 'string') {
+          repositoryTexts.push(Buffer.from(readme.content, 'base64').toString('utf8'));
+        }
+      } catch (error) {
+        if (error.status !== 404) throw error;
+      }
     }));
   const changes = [];
   for (const [path, language] of [['README.md', 'en'], ['README.en.md', 'en']]) {
@@ -162,7 +175,7 @@ async function update({ github, context, core }) {
     const previous = Buffer.from(file.content, 'base64').toString('utf8');
     const withProjects = replaceSection(previous, render(repos, owner, language));
     const next = replaceTechStack(withProjects,
-      renderTechStack(repos, owner, language, [...repositoryLanguages]));
+      renderTechStack(repos, owner, language, [...repositoryLanguages], repositoryTexts));
     if (next !== previous) changes.push({ path, sha: file.sha, next });
   }
   // Validate both documents first; each file SHA protects concurrent edits.
