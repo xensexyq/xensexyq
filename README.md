@@ -13,7 +13,7 @@
 <!-- TECH_STACK:START -->
 <h3>🛠 Tech Stack</h3>
 <p>
-  💻 <img src="https://img.shields.io/badge/C%2B%2B-333333?logo=cplusplus&amp;logoColor=659AD2" alt="C++" /> <img src="https://img.shields.io/badge/Python-333333?logo=python&amp;logoColor=3776AB" alt="Python" /> <img src="https://img.shields.io/badge/Shell-333333?logo=gnubash&amp;logoColor=4EAA25" alt="Shell" /> <img src="https://img.shields.io/badge/PowerShell-333333?logo=powershell&amp;logoColor=5391FE" alt="PowerShell" /> <img src="https://img.shields.io/badge/Batchfile-333333" alt="Batchfile" /><br />
+  💻 <img src="https://img.shields.io/badge/C%2B%2B-333333?logo=cplusplus&amp;logoColor=659AD2" alt="C++" /> <img src="https://img.shields.io/badge/Python-333333?logo=python&amp;logoColor=3776AB" alt="Python" /> <img src="https://img.shields.io/badge/Shell-333333?logo=gnubash&amp;logoColor=4EAA25" alt="Shell" /> <img src="https://img.shields.io/badge/PowerShell-333333?logo=powershell&amp;logoColor=5391FE" alt="PowerShell" /> <img src="https://img.shields.io/badge/Batchfile-333333" alt="Batchfile" /> <img src="https://img.shields.io/badge/HTML-333333" alt="HTML" /><br />
   🤖 <img src="https://img.shields.io/badge/Pinocchio-333333" alt="Pinocchio" /> <img src="https://img.shields.io/badge/LeRobot-333333?logo=huggingface&amp;logoColor=FFD21E" alt="LeRobot" /> <img src="https://img.shields.io/badge/MeshCat-333333" alt="MeshCat" /> <img src="https://img.shields.io/badge/OpenPI-333333" alt="OpenPI" /> <img src="https://img.shields.io/badge/TacCap-333333" alt="TacCap" /><br />
   🔌 <img src="https://img.shields.io/badge/STM32-333333?logo=stmicroelectronics&amp;logoColor=39A9DC" alt="STM32" /> <img src="https://img.shields.io/badge/CMSIS--DAP-333333?logo=arm&amp;logoColor=0091BD" alt="CMSIS-DAP" /><br />
   ⚙️ <img src="https://img.shields.io/badge/CMake-333333?logo=cmake&amp;logoColor=64B54E" alt="CMake" /> <img src="https://img.shields.io/badge/pybind11-333333" alt="pybind11" /> <img src="https://img.shields.io/badge/Git-333333?logo=git&amp;logoColor=F05032" alt="Git" /><br />
@@ -33,9 +33,9 @@
 <!-- PROJECTS:START -->
 <h3>🚀 Latest Projects <sub>daily · <a href="https://github.com/xensexyq?tab=repositories&amp;type=source">All →</a></sub></h3>
 <p>
+  &bull; <a href="https://github.com/xensexyq/taccap-test-ui" title="Local automated diagnostics UI for the TacCap SDK and follower grippers, with HTML, CSV and JSON reports."><strong>taccap-test-ui</strong></a> · <code>Python</code><br />
   &bull; <a href="https://github.com/xensexyq/DAP-Downloader" title="Windows CMSIS-DAP firmware downloader for STM32H5"><strong>DAP-Downloader</strong></a> · <code>Python</code><br />
-  &bull; <a href="https://github.com/xensexyq/fastiter-control-sim"><strong>fastiter-control-sim</strong></a> · <code>C++</code><br />
-  &bull; <a href="https://github.com/xensexyq/fastiter-control-sim-win" title="Native Windows support for FR3 Pinocchio C++ simulation"><strong>fastiter-control-sim-win</strong></a> · <code>C++</code>
+  &bull; <a href="https://github.com/xensexyq/fastiter-control-sim"><strong>fastiter-control-sim</strong></a> · <code>C++</code>
 </p>
 <!-- PROJECTS:END -->
 </td>
