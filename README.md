@@ -33,9 +33,9 @@
 <!-- PROJECTS:START -->
 <h3>🚀 Latest Projects <sub>daily · <a href="https://github.com/xensexyq?tab=repositories&amp;type=source">All →</a></sub></h3>
 <p>
+  &bull; <a href="https://github.com/xensexyq/modbus-force-reader" title="通过 USB 转 RS485 读取并打印 Modbus RTU 力传感器寄存器值"><strong>modbus-force-reader</strong></a> · <code>Python</code><br />
   &bull; <a href="https://github.com/xensexyq/taccap-test-ui" title="Local automated diagnostics UI for the TacCap SDK and follower grippers, with HTML, CSV and JSON reports."><strong>taccap-test-ui</strong></a> · <code>Python</code><br />
-  &bull; <a href="https://github.com/xensexyq/DAP-Downloader" title="Windows CMSIS-DAP firmware downloader for STM32H5"><strong>DAP-Downloader</strong></a> · <code>Python</code><br />
-  &bull; <a href="https://github.com/xensexyq/fastiter-control-sim"><strong>fastiter-control-sim</strong></a> · <code>C++</code>
+  &bull; <a href="https://github.com/xensexyq/DAP-Downloader" title="Windows CMSIS-DAP firmware downloader for STM32H5"><strong>DAP-Downloader</strong></a> · <code>Python</code>
 </p>
 <!-- PROJECTS:END -->
 </td>
