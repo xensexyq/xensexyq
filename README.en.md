@@ -36,9 +36,9 @@ Robot control · Embedded tools · Simulation and engineering
 <!-- PROJECTS:START -->
 <h3>🚀 Latest Projects <sub>daily · <a href="https://github.com/xensexyq?tab=repositories&amp;type=source">All →</a></sub></h3>
 <p>
-  &bull; <a href="https://github.com/xensexyq/modbus-force-reader" title="通过 USB 转 RS485 读取并打印 Modbus RTU 力传感器寄存器值"><strong>modbus-force-reader</strong></a> · <code>Python</code><br />
-  &bull; <a href="https://github.com/xensexyq/taccap-test-ui" title="Local automated diagnostics UI for the TacCap SDK and follower grippers, with HTML, CSV and JSON reports."><strong>taccap-test-ui</strong></a> · <code>Python</code><br />
-  &bull; <a href="https://github.com/xensexyq/DAP-Downloader" title="Windows CMSIS-DAP firmware downloader for STM32H5"><strong>DAP-Downloader</strong></a> · <code>Python</code>
+  &bull; <a href="https://github.com/xensexyq/rime-simplified-deploy" title="IBus Rime 简体中文一键部署：让 luna&#95;pinyin&#95;simp 稳定输出简体（Linux）"><strong>rime-simplified-deploy</strong></a> · <code>Shell</code><br />
+  &bull; <a href="https://github.com/xensexyq/ai-cli-deploy" title="一键部署 Codex（ChatGPT 订阅 / DuckCoding 一键切换）与 Claude Code，支持 Linux 与 Windows"><strong>ai-cli-deploy</strong></a> · <code>Python</code><br />
+  &bull; <a href="https://github.com/xensexyq/modbus-force-reader" title="通过 USB 转 RS485 读取并打印 Modbus RTU 力传感器寄存器值"><strong>modbus-force-reader</strong></a> · <code>Python</code>
 </p>
 <!-- PROJECTS:END -->
 </td>
