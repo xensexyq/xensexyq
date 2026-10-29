@@ -16,7 +16,7 @@ Robot control · Embedded tools · Simulation and engineering
 <!-- TECH_STACK:START -->
 <h3>🛠 Tech Stack</h3>
 <p>
-  💻 <img src="https://img.shields.io/badge/C%2B%2B-333333?logo=cplusplus&amp;logoColor=659AD2" alt="C++" /> <img src="https://img.shields.io/badge/Python-333333?logo=python&amp;logoColor=3776AB" alt="Python" /> <img src="https://img.shields.io/badge/Shell-333333?logo=gnubash&amp;logoColor=4EAA25" alt="Shell" /> <img src="https://img.shields.io/badge/PowerShell-333333?logo=powershell&amp;logoColor=5391FE" alt="PowerShell" /> <img src="https://img.shields.io/badge/Batchfile-333333" alt="Batchfile" /><br />
+  💻 <img src="https://img.shields.io/badge/C%2B%2B-333333?logo=cplusplus&amp;logoColor=659AD2" alt="C++" /> <img src="https://img.shields.io/badge/Python-333333?logo=python&amp;logoColor=3776AB" alt="Python" /> <img src="https://img.shields.io/badge/Shell-333333?logo=gnubash&amp;logoColor=4EAA25" alt="Shell" /> <img src="https://img.shields.io/badge/PowerShell-333333?logo=powershell&amp;logoColor=5391FE" alt="PowerShell" /> <img src="https://img.shields.io/badge/Batchfile-333333" alt="Batchfile" /> <img src="https://img.shields.io/badge/Dockerfile-333333" alt="Dockerfile" /><br />
   🤖 <img src="https://img.shields.io/badge/Pinocchio-333333" alt="Pinocchio" /> <img src="https://img.shields.io/badge/LeRobot-333333?logo=huggingface&amp;logoColor=FFD21E" alt="LeRobot" /> <img src="https://img.shields.io/badge/MeshCat-333333" alt="MeshCat" /> <img src="https://img.shields.io/badge/TacCap-333333" alt="TacCap" /><br />
   🔌 <img src="https://img.shields.io/badge/STM32-333333?logo=stmicroelectronics&amp;logoColor=39A9DC" alt="STM32" /> <img src="https://img.shields.io/badge/CMSIS--DAP-333333?logo=arm&amp;logoColor=0091BD" alt="CMSIS-DAP" /><br />
   ⚙️ <img src="https://img.shields.io/badge/CMake-333333?logo=cmake&amp;logoColor=64B54E" alt="CMake" /> <img src="https://img.shields.io/badge/pybind11-333333" alt="pybind11" /> <img src="https://img.shields.io/badge/Git-333333?logo=git&amp;logoColor=F05032" alt="Git" /><br />
@@ -36,9 +36,9 @@ Robot control · Embedded tools · Simulation and engineering
 <!-- PROJECTS:START -->
 <h3>🚀 Latest Projects <sub>daily · <a href="https://github.com/xensexyq?tab=repositories&amp;type=source">All →</a></sub></h3>
 <p>
-  &bull; <a href="https://github.com/xensexyq/rime-simplified-deploy" title="IBus Rime 简体中文一键部署：让 luna&#95;pinyin&#95;simp 稳定输出简体（Linux）"><strong>rime-simplified-deploy</strong></a> · <code>Python</code><br />
-  &bull; <a href="https://github.com/xensexyq/ai-cli-deploy" title="一键部署 Codex（ChatGPT 订阅 / DuckCoding 一键切换）与 Claude Code，支持 Linux 与 Windows"><strong>ai-cli-deploy</strong></a> · <code>Python</code><br />
-  &bull; <a href="https://github.com/xensexyq/modbus-force-reader" title="通过 USB 转 RS485 读取并打印 Modbus RTU 力传感器寄存器值"><strong>modbus-force-reader</strong></a> · <code>Python</code>
+  &bull; <a href="https://github.com/xensexyq/gemini-isaac-ros-workbench" title="Docker Community workbench for Orbbec Gemini cameras, Isaac ROS visual SLAM and depth mapping."><strong>gemini-isaac-ros-workbench</strong></a> · <code>Python</code><br />
+  &bull; <a href="https://github.com/xensexyq/vio-atlas" title="Curated VIO and visual-inertial SLAM resources: software and hardware synchronization, drivers, calibration and evaluation."><strong>vio-atlas</strong></a><br />
+  &bull; <a href="https://github.com/xensexyq/rime-simplified-deploy" title="IBus Rime 简体中文一键部署：让 luna&#95;pinyin&#95;simp 稳定输出简体（Linux）"><strong>rime-simplified-deploy</strong></a> · <code>Python</code>
 </p>
 <!-- PROJECTS:END -->
 </td>
