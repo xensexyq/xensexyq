@@ -31,13 +31,13 @@
         <img width="100%" src="https://github-stats-extended.vercel.app/api?username=xensexyq&amp;show_icons=true&amp;theme=buefy&amp;include_all_commits=true&amp;hide_rank=false&amp;hide_title=true&amp;line_height=20&amp;card_width=470" alt="xensexyq's GitHub statistics" />
       </a>
       <a href="https://github.com/xensexyq?tab=repositories">
-        <img width="100%" src="https://github-stats-extended.vercel.app/api/top-langs/?username=xensexyq&amp;theme=buefy&amp;layout=compact&amp;card_width=360&amp;hide_title=true" alt="Most used languages in xensexyq's public repositories" />
+        <img width="100%" src="https://github-stats-extended.vercel.app/api/top-langs/?username=xensexyq&amp;theme=buefy&amp;layout=compact&amp;card_width=420&amp;hide_title=true" alt="Most used languages in xensexyq's public repositories" />
       </a>
 <!-- PROJECTS:START -->
 <h3>🚀 Latest Projects <sub>daily · <a href="https://github.com/xensexyq?tab=repositories&amp;type=source">All →</a></sub></h3>
-<p><a href="https://github.com/xensexyq/OKVIS2-X-Gemini335L" title="OKVIS2-X with Gemini 335L capture, calibration, CPU/GPU baselines and dense-mapping integration tools."><strong>OKVIS2-X-Gemini335L</strong></a> · <code>C++</code> — OKVIS2-X with Gemini 335L capture, calibration, CPU/GPU baselines and dense-mapping integration tools.</p>
-<p><a href="https://github.com/xensexyq/gemini-isaac-ros-workbench" title="Docker Community workbench for Orbbec Gemini cameras, Isaac ROS visual SLAM and depth mapping."><strong>gemini-isaac-ros-wor&#8203;kbench</strong></a> · <code>Python</code> — Docker Community workbench for Orbbec Gemini cameras, Isaac ROS visual SLAM and depth mapping.</p>
-<p><a href="https://github.com/xensexyq/vio-atlas" title="Curated VIO and visual-inertial SLAM resources: software and hardware synchronization, drivers, calibration and evaluation."><strong>vio-atlas</strong></a> — Curated VIO and visual-inertial SLAM resources: software and hardware synchronization, drivers, calibration and evaluation.</p>
+<div><a href="https://github.com/xensexyq/OKVIS2-X-Gemini335L" title="OKVIS2-X with Gemini 335L capture, calibration, CPU/GPU baselines and dense-mapping integration tools."><strong>OKVIS2-X-Gemini335L</strong></a> · <code>C++</code> — OKVIS2-X with Gemini 335L capture, calibration, CPU/GPU baselines and dense-mapping integration tools.</div>
+<div><a href="https://github.com/xensexyq/gemini-isaac-ros-workbench" title="Docker Community workbench for Orbbec Gemini cameras, Isaac ROS visual SLAM and depth mapping."><strong>gemini-isaac-ros-wor&#8203;kbench</strong></a> · <code>Python</code> — Docker Community workbench for Orbbec Gemini cameras, Isaac ROS visual SLAM and depth mapping.</div>
+<div><a href="https://github.com/xensexyq/vio-atlas" title="Curated VIO and visual-inertial SLAM resources: software and hardware synchronization, drivers, calibration and evaluation."><strong>vio-atlas</strong></a> — Curated VIO and visual-inertial SLAM resources: software and hardware synchronization, drivers, calibration and evaluation.</div>
 <!-- PROJECTS:END -->
 </td>
 </tr>

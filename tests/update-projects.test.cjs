@@ -28,7 +28,7 @@ test('only original projects are shown and the compact list is limited', () => {
   assert.ok(!result.includes('Latest Forks'));
   assert.ok(!result.includes('<ul>'));
   assert.ok(result.includes('daily ·'));
-  assert.equal((result.match(/<p>/g) || []).length, 3);
+  assert.equal((result.match(/<div>/g) || []).length, 3);
 });
 test('metadata cannot inject HTML, Markdown images, or extra list items', () => {
   const result = render([repo('demo', { description: '<img> | ![x](url)\nnext & *bold*' })], owner);
@@ -291,7 +291,7 @@ test('content refresh preserves equal-height desktop and single-column mobile la
 
 test('recent projects use the column width for visible descriptions without a nested table', () => {
   const result=render([repo('one',{language:'Python',description:'Camera calibration and sensor capture.'}),repo('two',{language:'C++'}),repo('three')],owner);
-  assert.equal((result.match(/<p>/g)||[]).length,3);
+  assert.equal((result.match(/<div>/g)||[]).length,3);
   assert.ok(!result.includes('<table'));
   assert.match(result, / — Camera calibration and sensor capture\./);
   assert.ok(!result.includes('<br'));

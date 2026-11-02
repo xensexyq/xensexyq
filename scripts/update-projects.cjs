@@ -148,7 +148,7 @@ function render(repos, owner, language = 'en') {
     const projects = items.map(repo => {
       const languageLabel = cell(repo.language);
       const description = cell(repo.description);
-      return `<p><a href="https://github.com/${encodeURIComponent(owner)}/${encodeURIComponent(repo.name)}"${description ? ` title="${description}"` : ''}><strong>${flowText(repo.name)}</strong></a>${languageLabel ? ` · <code>${languageLabel}</code>` : ''}${description ? ` — ${flowText(repo.description)}` : ''}</p>`;
+      return `<div><a href="https://github.com/${encodeURIComponent(owner)}/${encodeURIComponent(repo.name)}"${description ? ` title="${description}"` : ''}><strong>${flowText(repo.name)}</strong></a>${languageLabel ? ` · <code>${languageLabel}</code>` : ''}${description ? ` — ${flowText(repo.description)}` : ''}</div>`;
     });
     return projects.join('\n');
   };
