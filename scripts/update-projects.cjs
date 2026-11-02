@@ -8,12 +8,20 @@ const STACK_END = '<!-- TECH_STACK:END -->';
 // Unknown domains still appear in the count and complete project catalog.
 const FOCUS_AREAS = [
   { en: 'Robot control and simulation', zh: '机器人控制与仿真',
+    summaryEn: 'Built arm kinematics, trajectory and interactive visualization tools.',
+    summaryZh: '做过机械臂运动学、轨迹与交互可视化工具，注重把算法接到可用的软件接口。',
     pattern: /\b(robot|robotics|pinocchio|meshcat|kinematics|control[-_]sim|lerobot|gripper|taccap|fr3)\b|机械臂|机器人|夹爪/i },
   { en: 'Embedded systems and device interfaces', zh: '嵌入式与设备接口',
+    summaryEn: 'Worked on firmware flashing, device protocols and sensor readout.',
+    summaryZh: '做过固件烧录、设备通信与传感器采集，习惯沿软硬件链路定位问题。',
     pattern: /\b(stm32\w*|cmsis[- ]dap|firmware|modbus|rs485|embedded)\b|嵌入式|固件|传感器/i },
   { en: 'Vision and state estimation', zh: '视觉与状态估计',
+    summaryEn: 'Integrated camera capture, calibration and VIO / SLAM workflows.',
+    summaryZh: '做过相机采集、标定与 VIO / SLAM 集成，关注时间同步和可复现的实验。',
     pattern: /\b(vio|slam|vslam|okvis\w*|visual[- ]inertial|camera\w*|gemini|nvblox)\b|视觉|相机|建图/i },
-  { en: 'Other tools and resources', zh: '其他工具与资料' },
+  { en: 'Other tools and resources', zh: '其他工具与资料',
+    summaryEn: 'Turn recurring setup and debugging work into reusable tools and guides.',
+    summaryZh: '把重复的部署、调试与资料整理做成工具和文档，让工程经验可以复用。' },
 ];
 
 function publicProjects(repos, owner) {
@@ -34,16 +42,15 @@ function renderAbout(repos, owner, language = 'en') {
   const projects = publicProjects(repos, owner);
   const en = language === 'en';
   const lines = [en
-    ? `<p>My ${projects.length} public project${projects.length === 1 ? ' covers' : 's cover'} the following areas, from hardware interfaces to simulation and perception tooling.</p>`
-    : `<p>我的 ${projects.length} 个公开项目涵盖以下方向，连接硬件接口、仿真与感知工具。</p>`];
-  const areas = FOCUS_AREAS.map(area => ({ area, projects: projects.filter(repo => focusFor(repo) === area) }))
-    .filter(group => group.projects.length);
+    ? '<p>I connect hardware and software, with a focus on practical tools, careful debugging and reproducible workflows.</p>'
+    : '<p>我喜欢把硬件与软件接起来，做能实际使用的工具；重视问题定位、实验复现和工程细节。</p>'];
+  const areas = FOCUS_AREAS.filter(area => projects.some(repo => focusFor(repo) === area));
   if (areas.length) {
-    lines.push('<ul>', ...areas.map(group =>
-      `  <li><strong>${en ? group.area.en : group.area.zh}</strong> · ${group.projects.length} — ${group.projects.slice(0, 2).map(repo => projectLink(repo, owner)).join(', ')}</li>`), '</ul>');
+    lines.push('<ul>', ...areas.map(area =>
+      `  <li>${en ? area.summaryEn : area.summaryZh}</li>`), '</ul>');
   } else {
-    lines.push(en ? '<p>Public project details will appear here as repositories are added.</p>'
-      : '<p>新增公开仓库后，这里会自动显示项目方向。</p>');
+    lines.push(en ? '<p>Project experience will appear here as public repositories are added.</p>'
+      : '<p>新增公开仓库后，这里会自动补充项目经历概要。</p>');
   }
   return lines.join('\n');
 }
@@ -134,11 +141,9 @@ function render(repos, owner, language = 'en') {
     const projects = items.map(repo => {
       const languageLabel = cell(repo.language);
       const description = cell(repo.description);
-      return `&bull; <a href="https://github.com/${encodeURIComponent(owner)}/${encodeURIComponent(repo.name)}"${description ? ` title="${description}"` : ''}><strong>${cell(repo.name)}</strong></a>${languageLabel ? ` · <code>${languageLabel}</code>` : ''}`;
+      return `<tr><td align="left"><a href="https://github.com/${encodeURIComponent(owner)}/${encodeURIComponent(repo.name)}"${description ? ` title="${description}"` : ''}><strong>${cell(repo.name)}</strong></a></td><td align="right" nowrap>${languageLabel ? `<code>${languageLabel}</code>` : '—'}</td></tr>`;
     });
-    const rows = projects.map((project, index) =>
-      `  ${project}${index < projects.length - 1 ? '<br />' : ''}`);
-    return ['<p>', ...rows, '</p>'].join('\n');
+    return ['<table width="100%">', '<tbody>', ...projects, '</tbody>', '</table>'].join('\n');
   };
   const allProjects = `https://github.com/${encodeURIComponent(owner)}?tab=repositories&amp;type=source`;
   return [
@@ -181,11 +186,19 @@ function renderTechStack(repos, owner, language = 'en', repositoryLanguages = []
     }));
   rows[0].items.push(...genericLanguages);
   const populatedRows = rows.filter(group => group.items.length);
-  const content = populatedRows.length ? [
-    '<p>',
-    ...populatedRows.map((group, index) => `  ${group.icon} ${group.items.map(item => `<img src="${item.src}" alt="${item.label}" />`).join(' ')}${index < populatedRows.length - 1 ? '<br />' : ''}`),
-    '</p>',
-  ] : [`<p><sub>${en ? 'No stack metadata detected yet.' : '暂未检测到技术栈元数据。'}</sub></p>`];
+  // Keep each badge row bounded so GitHub never wraps part of a group by accident.
+  const badgeRows = populatedRows.flatMap(group => {
+    const chunks = [];
+    for (let offset = 0; offset < group.items.length; offset += 4) {
+      const badges = group.items.slice(offset, offset + 4)
+        .map(item => `<img height="20" src="${item.src}" alt="${item.label}" />`).join(' ');
+      chunks.push(`<tr><td width="24" align="center" valign="middle">${offset === 0 ? group.icon : '&#160;'}</td><td nowrap valign="middle">${badges}</td></tr>`);
+    }
+    return chunks;
+  });
+  const content = populatedRows.length
+    ? ['<table>', '<tbody>', ...badgeRows, '</tbody>', '</table>']
+    : [`<p><sub>${en ? 'No stack metadata detected yet.' : '暂未检测到技术栈元数据。'}</sub></p>`];
   return [
     en ? '<h3>🛠 Tech Stack</h3>' : '<h3>🛠 技术栈</h3>',
     ...content,

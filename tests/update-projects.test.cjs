@@ -28,7 +28,7 @@ test('only original projects are shown and the compact list is limited', () => {
   assert.ok(!result.includes('Latest Forks'));
   assert.ok(!result.includes('<ul>'));
   assert.ok(result.includes('daily ·'));
-  assert.equal((result.match(/<br \/>/g) || []).length, 2);
+  assert.equal((result.match(/<tr>/g) || []).length, 3);
 });
 test('metadata cannot inject HTML, Markdown images, or extra list items', () => {
   const result = render([repo('demo', { description: '<img> | ![x](url)\nnext & *bold*' })], owner);
@@ -150,7 +150,6 @@ test('new public projects refresh the introduction and full portfolio, preservin
   const text = Buffer.from(env.writes[0].content, 'base64').toString('utf8');
   assert.ok(!text.includes('stale introduction'));
   assert.ok(!text.includes('stale portfolio'));
-  assert.match(text, /2 public projects/);
   assert.match(text, /Robot control and simulation/);
   assert.match(text, /Vision and state estimation/);
   assert.match(text, /camera-workbench/);
@@ -168,8 +167,7 @@ test('new domains and unclassified projects enter the overview without claiming 
     repo('new-tool', { description: 'A completely new domain' }),
     repo('vision', { topics: ['visual-inertial-odometry'] }),
   ], owner, 'en', [], ['An unrelated README mentions medical diagnosis.']);
-  assert.match(before, /1 public project/);
-  assert.match(after, /3 public projects/);
+  assert.notEqual(before, after);
   assert.match(after, /Embedded systems and device interfaces/);
   assert.match(after, /Vision and state estimation/);
   assert.match(after, /Other tools and resources/);
@@ -183,7 +181,6 @@ test('Chinese overview is regenerated and descriptions are escaped, including un
   const zh = env.writes.find(write => write.path === 'README.zh-CN.md');
   assert.ok(zh);
   const text = Buffer.from(zh.content, 'base64').toString('utf8');
-  assert.match(text, /1 个公开项目/);
   assert.match(text, /其他工具与资料/);
   assert.ok(text.includes('&#60;script&#62;'));
   assert.ok(!text.includes('<script>'));
@@ -207,7 +204,6 @@ test('all four sections are idempotent and malformed overview markers prevent ev
 test('removing or privatizing a project removes it from the introduction and portfolio', () => {
   const initial = update.renderProfile(document, [repo('camera', { description: 'SLAM' })], owner);
   const next = update.renderProfile(initial, [repo('camera', { description: 'SLAM', private: true })], owner);
-  assert.match(next, /0 public projects/);
   assert.ok(!next.includes('camera'));
   assert.ok(!next.includes('Vision and state estimation'));
 });
@@ -216,4 +212,36 @@ test('control simulation repositories are classified even when the description i
   const rendered = update.renderProfile(document, [repo('fastiter-control-sim')], owner);
   assert.match(rendered, /Robot control and simulation/);
   assert.ok(!rendered.includes('Other tools and resources'));
+});
+
+test('About Me summarizes experience without project links, names or repository counts', () => {
+  const output = update.renderProfile(document, [repo('unique-device-tool', {description:'STM32 firmware'})], owner);
+  const about = output.split('<!-- ABOUT:START -->')[1].split('<!-- ABOUT:END -->')[0];
+  assert.ok(!about.includes('<a '));
+  assert.ok(!about.includes('unique-device-tool'));
+  assert.ok(!/\d+ public project/.test(about));
+  assert.match(about, /firmware|device/i);
+  const zh = update.renderProfile(document,[repo('unique-device-tool',{description:'STM32 firmware'})],owner,'zh')
+    .split('<!-- ABOUT:START -->')[1].split('<!-- ABOUT:END -->')[0];
+  assert.ok(!zh.includes('<a '));
+  assert.match(zh,/固件|设备/);
+});
+
+test('badge groups use bounded nonwrapping rows with a consistent image height', () => {
+  const result = renderTechStack([], owner, 'en', ['C++','Python','Shell','PowerShell','Batchfile','CSS','Dockerfile']);
+  const rows = [...result.matchAll(/<tr>(.*?)<\/tr>/g)].map(match=>match[1]);
+  assert.ok(rows.length >= 2);
+  for (const row of rows) {
+    const badges = row.match(/<img /g) || [];
+    assert.ok(badges.length > 0 && badges.length <= 4);
+    assert.match(row, /nowrap/);
+    assert.equal((row.match(/height="20"/g)||[]).length,badges.length);
+  }
+});
+
+test('recent project names and languages have separate left and right aligned cells', () => {
+  const result=render([repo('one',{language:'Python'}),repo('two',{language:'C++'}),repo('three')],owner);
+  assert.equal((result.match(/<tr>/g)||[]).length,3);
+  assert.equal((result.match(/align="left"/g)||[]).length,3);
+  assert.equal((result.match(/align="right"/g)||[]).length,3);
 });

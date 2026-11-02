@@ -8,14 +8,14 @@ The GitHub Actions workflow reads all pages of the account's public repository l
 
 | Section | Content |
 | --- | --- |
-| `ABOUT` | Current project count and an overview of project areas, with example links |
+| `ABOUT` | Experience summaries selected from current project areas, without project links or counts |
 | `PORTFOLIO` | Every eligible project, its area and its repository description |
-| `PROJECTS` | The three newest projects, ordered by creation time |
-| `TECH_STACK` | Technology badges detected from public repository metadata, language inventories and READMEs |
+| `PROJECTS` | The three newest projects, ordered by creation time, with separate aligned name and language columns |
+| `TECH_STACK` | Technology badges detected from public repository metadata, language inventories and READMEs, in nonwrapping rows of up to four badges |
 
 Private, archived, forked, foreign-owned and profile repositories are excluded from the overview and catalog. New domains that do not match an existing category appear under **Other tools and resources**. Categories use the repository name, description and topics; they summarize the portfolio, not a person's qualifications. The first matching category is used, so a multidisciplinary project appears once. Raw repository descriptions retain their original language in both versions.
 
-The profile keeps its original two-column layout: introduction, toolbox and contacts on the left; statistics and latest projects on the right. The full catalog and collaboration notes sit in a collapsed section below. The greeting, contact details and team collaboration links remain hand-written. Technology badges summarize source mentions, not proficiency or verified hardware support. Overview classification deliberately does not use README text: a resource list may mention technologies the author has never implemented.
+The profile keeps its original two-column layout: introduction, toolbox and contacts on the left; statistics at the top right and latest projects at the bottom right. The full catalog and collaboration notes sit in a collapsed section below. The greeting, contact details and team collaboration links remain hand-written. About Me emphasizes engineering approach and project experience; it is not a repository index. Technology badges summarize source mentions, not proficiency or verified hardware support. Overview classification deliberately does not use README text: a resource list may mention technologies the author has never implemented.
 
 ## 2. When it runs
 

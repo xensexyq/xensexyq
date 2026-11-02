@@ -4,26 +4,29 @@
 
 <table width="100%">
 <tr>
-<td width="54%" valign="top">
+<td width="54%" valign="top" rowspan="2">
       <h3>👨‍💻 关于我</h3>
 <!-- ABOUT:START -->
-<p>我的 9 个公开项目涵盖以下方向，连接硬件接口、仿真与感知工具。</p>
+<p>我喜欢把硬件与软件接起来，做能实际使用的工具；重视问题定位、实验复现和工程细节。</p>
 <ul>
-  <li><strong>机器人控制与仿真</strong> · 2 — <a href="https://github.com/xensexyq/fastiter-control-sim">fastiter-control-sim</a>, <a href="https://github.com/xensexyq/fastiter-control-sim-win">fastiter-control-sim-win</a></li>
-  <li><strong>嵌入式与设备接口</strong> · 2 — <a href="https://github.com/xensexyq/DAP-Downloader">DAP-Downloader</a>, <a href="https://github.com/xensexyq/modbus-force-reader">modbus-force-reader</a></li>
-  <li><strong>视觉与状态估计</strong> · 3 — <a href="https://github.com/xensexyq/gemini-isaac-ros-workbench">gemini-isaac-ros-workbench</a>, <a href="https://github.com/xensexyq/OKVIS2-X-Gemini335L">OKVIS2-X-Gemini335L</a></li>
-  <li><strong>其他工具与资料</strong> · 2 — <a href="https://github.com/xensexyq/ai-cli-deploy">ai-cli-deploy</a>, <a href="https://github.com/xensexyq/rime-simplified-deploy">rime-simplified-deploy</a></li>
+  <li>做过机械臂运动学、轨迹与交互可视化工具，注重把算法接到可用的软件接口。</li>
+  <li>做过固件烧录、设备通信与传感器采集，习惯沿软硬件链路定位问题。</li>
+  <li>做过相机采集、标定与 VIO / SLAM 集成，关注时间同步和可复现的实验。</li>
+  <li>把重复的部署、调试与资料整理做成工具和文档，让工程经验可以复用。</li>
 </ul>
 <!-- ABOUT:END -->
 <!-- TECH_STACK:START -->
 <h3>🛠 技术栈</h3>
-<p>
-  💻 <img src="https://img.shields.io/badge/C%2B%2B-333333?logo=cplusplus&amp;logoColor=659AD2" alt="C++" /> <img src="https://img.shields.io/badge/Python-333333?logo=python&amp;logoColor=3776AB" alt="Python" /> <img src="https://img.shields.io/badge/Shell-333333?logo=gnubash&amp;logoColor=4EAA25" alt="Shell" /> <img src="https://img.shields.io/badge/PowerShell-333333?logo=powershell&amp;logoColor=5391FE" alt="PowerShell" /> <img src="https://img.shields.io/badge/Batchfile-333333" alt="Batchfile" /> <img src="https://img.shields.io/badge/CSS-333333" alt="CSS" /> <img src="https://img.shields.io/badge/Dockerfile-333333" alt="Dockerfile" /><br />
-  🤖 <img src="https://img.shields.io/badge/Pinocchio-333333" alt="Pinocchio" /> <img src="https://img.shields.io/badge/LeRobot-333333?logo=huggingface&amp;logoColor=FFD21E" alt="LeRobot" /> <img src="https://img.shields.io/badge/MeshCat-333333" alt="MeshCat" /> <img src="https://img.shields.io/badge/TacCap-333333" alt="TacCap" /><br />
-  🔌 <img src="https://img.shields.io/badge/STM32-333333?logo=stmicroelectronics&amp;logoColor=39A9DC" alt="STM32" /> <img src="https://img.shields.io/badge/CMSIS--DAP-333333?logo=arm&amp;logoColor=0091BD" alt="CMSIS-DAP" /><br />
-  ⚙️ <img src="https://img.shields.io/badge/CMake-333333?logo=cmake&amp;logoColor=64B54E" alt="CMake" /> <img src="https://img.shields.io/badge/pybind11-333333" alt="pybind11" /> <img src="https://img.shields.io/badge/Git-333333?logo=git&amp;logoColor=F05032" alt="Git" /><br />
-  🖥 <img src="https://img.shields.io/badge/Qt-333333?logo=qt&amp;logoColor=41CD52" alt="Qt" /> <img src="https://img.shields.io/badge/Windows-333333" alt="Windows" /> <img src="https://img.shields.io/badge/Linux-333333?logo=linux&amp;logoColor=FCC624" alt="Linux" />
-</p>
+<table>
+<tbody>
+<tr><td width="24" align="center" valign="middle">💻</td><td nowrap valign="middle"><img height="20" src="https://img.shields.io/badge/C%2B%2B-333333?logo=cplusplus&amp;logoColor=659AD2" alt="C++" /> <img height="20" src="https://img.shields.io/badge/Python-333333?logo=python&amp;logoColor=3776AB" alt="Python" /> <img height="20" src="https://img.shields.io/badge/Shell-333333?logo=gnubash&amp;logoColor=4EAA25" alt="Shell" /> <img height="20" src="https://img.shields.io/badge/PowerShell-333333?logo=powershell&amp;logoColor=5391FE" alt="PowerShell" /></td></tr>
+<tr><td width="24" align="center" valign="middle">&#160;</td><td nowrap valign="middle"><img height="20" src="https://img.shields.io/badge/Batchfile-333333" alt="Batchfile" /> <img height="20" src="https://img.shields.io/badge/CSS-333333" alt="CSS" /> <img height="20" src="https://img.shields.io/badge/Dockerfile-333333" alt="Dockerfile" /></td></tr>
+<tr><td width="24" align="center" valign="middle">🤖</td><td nowrap valign="middle"><img height="20" src="https://img.shields.io/badge/Pinocchio-333333" alt="Pinocchio" /> <img height="20" src="https://img.shields.io/badge/LeRobot-333333?logo=huggingface&amp;logoColor=FFD21E" alt="LeRobot" /> <img height="20" src="https://img.shields.io/badge/MeshCat-333333" alt="MeshCat" /> <img height="20" src="https://img.shields.io/badge/TacCap-333333" alt="TacCap" /></td></tr>
+<tr><td width="24" align="center" valign="middle">🔌</td><td nowrap valign="middle"><img height="20" src="https://img.shields.io/badge/STM32-333333?logo=stmicroelectronics&amp;logoColor=39A9DC" alt="STM32" /> <img height="20" src="https://img.shields.io/badge/CMSIS--DAP-333333?logo=arm&amp;logoColor=0091BD" alt="CMSIS-DAP" /></td></tr>
+<tr><td width="24" align="center" valign="middle">⚙️</td><td nowrap valign="middle"><img height="20" src="https://img.shields.io/badge/CMake-333333?logo=cmake&amp;logoColor=64B54E" alt="CMake" /> <img height="20" src="https://img.shields.io/badge/pybind11-333333" alt="pybind11" /> <img height="20" src="https://img.shields.io/badge/Git-333333?logo=git&amp;logoColor=F05032" alt="Git" /></td></tr>
+<tr><td width="24" align="center" valign="middle">🖥</td><td nowrap valign="middle"><img height="20" src="https://img.shields.io/badge/Qt-333333?logo=qt&amp;logoColor=41CD52" alt="Qt" /> <img height="20" src="https://img.shields.io/badge/Windows-333333" alt="Windows" /> <img height="20" src="https://img.shields.io/badge/Linux-333333?logo=linux&amp;logoColor=FCC624" alt="Linux" /></td></tr>
+</tbody>
+</table>
 <!-- TECH_STACK:END -->
 <h3>🤝 联系我</h3>
 <p>📧 邮箱： <a href="mailto:nxuerobot@gmail.com">nxuerobot@gmail.com</a> · <a href="https://space.bilibili.com/356577945">Bilibili</a></p>
@@ -35,13 +38,19 @@
       <a href="https://github.com/xensexyq?tab=repositories">
         <img width="100%" src="https://github-stats-extended.vercel.app/api/top-langs/?username=xensexyq&amp;theme=buefy&amp;layout=compact" alt="xensexyq 公开仓库使用的语言" />
       </a>
+</td>
+</tr>
+<tr>
+<td width="46%" valign="bottom">
 <!-- PROJECTS:START -->
 <h3>🚀 最新项目 <sub>每日更新 · <a href="https://github.com/xensexyq?tab=repositories&amp;type=source">全部 →</a></sub></h3>
-<p>
-  &bull; <a href="https://github.com/xensexyq/OKVIS2-X-Gemini335L" title="OKVIS2-X with Gemini 335L capture, calibration, CPU/GPU baselines and dense-mapping integration tools."><strong>OKVIS2-X-Gemini335L</strong></a> · <code>C++</code><br />
-  &bull; <a href="https://github.com/xensexyq/gemini-isaac-ros-workbench" title="Docker Community workbench for Orbbec Gemini cameras, Isaac ROS visual SLAM and depth mapping."><strong>gemini-isaac-ros-workbench</strong></a> · <code>Python</code><br />
-  &bull; <a href="https://github.com/xensexyq/vio-atlas" title="Curated VIO and visual-inertial SLAM resources: software and hardware synchronization, drivers, calibration and evaluation."><strong>vio-atlas</strong></a>
-</p>
+<table width="100%">
+<tbody>
+<tr><td align="left"><a href="https://github.com/xensexyq/OKVIS2-X-Gemini335L" title="OKVIS2-X with Gemini 335L capture, calibration, CPU/GPU baselines and dense-mapping integration tools."><strong>OKVIS2-X-Gemini335L</strong></a></td><td align="right" nowrap><code>C++</code></td></tr>
+<tr><td align="left"><a href="https://github.com/xensexyq/gemini-isaac-ros-workbench" title="Docker Community workbench for Orbbec Gemini cameras, Isaac ROS visual SLAM and depth mapping."><strong>gemini-isaac-ros-workbench</strong></a></td><td align="right" nowrap><code>Python</code></td></tr>
+<tr><td align="left"><a href="https://github.com/xensexyq/vio-atlas" title="Curated VIO and visual-inertial SLAM resources: software and hardware synchronization, drivers, calibration and evaluation."><strong>vio-atlas</strong></a></td><td align="right" nowrap>—</td></tr>
+</tbody>
+</table>
 <!-- PROJECTS:END -->
 </td>
 </tr>
