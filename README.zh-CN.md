@@ -25,6 +25,9 @@
       <a href="https://github.com/xensexyq">
         <img width="100%" src="https://github-stats-extended.vercel.app/api?username=xensexyq&amp;show_icons=true&amp;theme=buefy&amp;include_all_commits=true&amp;hide_rank=false&amp;hide_title=true&amp;line_height=20&amp;card_width=470" alt="xensexyq 的 GitHub 统计" />
       </a>
+      <a href="https://github.com/xensexyq?tab=repositories">
+        <img width="100%" src="https://github-stats-extended.vercel.app/api/top-langs/?username=xensexyq&amp;theme=buefy&amp;layout=compact&amp;card_width=360&amp;hide_title=true" alt="xensexyq 公开仓库使用的语言" />
+      </a>
 <!-- TECH_STACK:START -->
 <h3>🛠 技术栈</h3>
 <pre>
@@ -36,9 +39,6 @@
 🖥️ <img height="20" src="https://img.shields.io/badge/Qt-333333?logo=qt&amp;logoColor=41CD52" alt="Qt" /> <img height="20" src="https://img.shields.io/badge/Windows-333333" alt="Windows" /> <img height="20" src="https://img.shields.io/badge/Linux-333333?logo=linux&amp;logoColor=FCC624" alt="Linux" />
 </pre>
 <!-- TECH_STACK:END -->
-      <a href="https://github.com/xensexyq?tab=repositories">
-        <img width="100%" src="https://github-stats-extended.vercel.app/api/top-langs/?username=xensexyq&amp;theme=buefy&amp;layout=compact&amp;card_width=360&amp;hide_title=true" alt="xensexyq 公开仓库使用的语言" />
-      </a>
 </td>
 </tr>
 <tr>
