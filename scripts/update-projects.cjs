@@ -16,7 +16,7 @@ const FOCUS_AREAS = [
     summaryZh: '<strong>嵌入式系统：</strong>做过 STM32 固件烧录、设备通信和力传感器采集，关注软硬件联调。',
     pattern: /\b(stm32\w*|cmsis[- ]dap|firmware|modbus|rs485|embedded)\b|嵌入式|固件|传感器/i },
   { en: 'Vision and state estimation', zh: '视觉与状态估计',
-    summaryEn: '<strong>Robot perception:</strong> camera capture, calibration and VIO / SLAM integration, with attention to timing and reproducibility.',
+    summaryEn: '<strong>Robot perception:</strong> camera capture and calibration, VIO / SLAM integration, and reproducible experiments.',
     summaryZh: '<strong>机器人感知：</strong>集成相机采集、标定与 VIO / SLAM 流程，重视时序与实验复现。',
     pattern: /\b(vio|slam|vslam|okvis\w*|visual[- ]inertial|camera\w*|gemini|nvblox)\b|视觉|相机|建图/i },
   { en: 'Other tools and resources', zh: '其他工具与资料',
@@ -42,7 +42,7 @@ function renderAbout(repos, owner, language = 'en') {
   const projects = publicProjects(repos, owner);
   const en = language === 'en';
   const lines = [en
-    ? '<p>My work centers on robotics and embedded systems. I enjoy connecting algorithms, software interfaces and physical devices through hands-on integration and debugging.</p>'
+    ? '<p>I build robotics and embedded tools, connecting algorithms to physical devices through hands-on debugging.</p>'
     : '<p>我主要围绕机器人学与嵌入式系统做工程实践，喜欢把算法、软件接口和真实设备接起来，在联调与问题定位中打磨可用的工具。</p>'];
   const areas = FOCUS_AREAS.filter(area => area.pattern && projects.some(repo => focusFor(repo) === area));
   if (areas.length) {
@@ -185,19 +185,21 @@ function renderTechStack(repos, owner, language = 'en', repositoryLanguages = []
       src: `https://img.shields.io/badge/${encodeURIComponent(label.replace(/-/g, '--').replace(/ /g, '_'))}-333333`,
     }));
   rows[0].items.push(...genericLanguages);
-  const populatedRows = rows.filter(group => group.items.length);
-  // Keep each badge row bounded so GitHub never wraps part of a group by accident.
-  const badgeRows = populatedRows.flatMap(group => {
-    const chunks = [];
-    for (let offset = 0; offset < group.items.length; offset += 4) {
-      const badges = group.items.slice(offset, offset + 4)
-        .map(item => `<img height="20" src="${item.src}" alt="${item.label}" />`).join(' ');
-      chunks.push(`${offset === 0 ? group.icon : '  '} ${badges}`);
-    }
-    return chunks;
-  });
-  const content = populatedRows.length
-    ? ['<pre>', ...badgeRows, '</pre>']
+  // Balance badge widths across compact rows instead of leaving short category rows.
+  // The estimate only chooses row membership; images retain their aspect ratios.
+  const badges = rows.flatMap(group => group.items).map(item => ({
+    ...item, weight: item.label.length * 6.5 + (item.src.includes('logo=') ? 24 : 10),
+  })).sort((a, b) => b.weight - a.weight || a.label.localeCompare(b.label, 'en'));
+  const badgeRows = Array.from({ length: Math.ceil(badges.length / 5) }, () => ({ items: [], weight: 0 }));
+  for (const badge of badges) {
+    const row = badgeRows.filter(row => row.items.length < 5)
+      .reduce((best, row) => !best || row.weight < best.weight ? row : best, null);
+    row.items.push(badge);
+    row.weight += badge.weight + 8;
+  }
+  const content = badges.length
+    ? ['<table align="center">', '<tbody>', ...badgeRows.map(row => '<tr>' + row.items
+      .map((item, index) => `<td align="center"${index === row.items.length - 1 && row.items.length < 5 ? ` colspan="${6 - row.items.length}"` : ''}><img height="20" src="${item.src}" alt="${item.label}" /></td>`).join('') + '</tr>'), '</tbody>', '</table>']
     : [`<p><sub>${en ? 'No stack metadata detected yet.' : '暂未检测到技术栈元数据。'}</sub></p>`];
   return [
     en ? '<h3>🛠 Tech Stack</h3>' : '<h3>🛠 技术栈</h3>',

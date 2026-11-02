@@ -7,11 +7,11 @@
 <td width="50%" valign="top">
       <h3>👨‍💻 About Me</h3>
 <!-- ABOUT:START -->
-<p>My work centers on robotics and embedded systems. I enjoy connecting algorithms, software interfaces and physical devices through hands-on integration and debugging.</p>
+<p>I build robotics and embedded tools, connecting algorithms to physical devices through hands-on debugging.</p>
 <ul>
   <li><strong>Robotics:</strong> arm forward / inverse kinematics, trajectory tools and simulation visualization.</li>
   <li><strong>Embedded systems:</strong> STM32 firmware flashing, device communication and force-sensor acquisition.</li>
-  <li><strong>Robot perception:</strong> camera capture, calibration and VIO / SLAM integration, with attention to timing and reproducibility.</li>
+  <li><strong>Robot perception:</strong> camera capture and calibration, VIO / SLAM integration, and reproducible experiments.</li>
 </ul>
 <!-- ABOUT:END -->
 <!-- PROJECTS:START -->
@@ -30,14 +30,14 @@
       </a>
 <!-- TECH_STACK:START -->
 <h3>🛠 Tech Stack</h3>
-<pre>
-💻 <img height="20" src="https://img.shields.io/badge/C%2B%2B-333333?logo=cplusplus&amp;logoColor=659AD2" alt="C++" /> <img height="20" src="https://img.shields.io/badge/Python-333333?logo=python&amp;logoColor=3776AB" alt="Python" /> <img height="20" src="https://img.shields.io/badge/Shell-333333?logo=gnubash&amp;logoColor=4EAA25" alt="Shell" /> <img height="20" src="https://img.shields.io/badge/PowerShell-333333?logo=powershell&amp;logoColor=5391FE" alt="PowerShell" />
-   <img height="20" src="https://img.shields.io/badge/Batchfile-333333" alt="Batchfile" /> <img height="20" src="https://img.shields.io/badge/CSS-333333" alt="CSS" /> <img height="20" src="https://img.shields.io/badge/Dockerfile-333333" alt="Dockerfile" />
-🤖 <img height="20" src="https://img.shields.io/badge/Pinocchio-333333" alt="Pinocchio" /> <img height="20" src="https://img.shields.io/badge/LeRobot-333333?logo=huggingface&amp;logoColor=FFD21E" alt="LeRobot" /> <img height="20" src="https://img.shields.io/badge/MeshCat-333333" alt="MeshCat" /> <img height="20" src="https://img.shields.io/badge/TacCap-333333" alt="TacCap" />
-🔌 <img height="20" src="https://img.shields.io/badge/STM32-333333?logo=stmicroelectronics&amp;logoColor=39A9DC" alt="STM32" /> <img height="20" src="https://img.shields.io/badge/CMSIS--DAP-333333?logo=arm&amp;logoColor=0091BD" alt="CMSIS-DAP" />
-⚙️ <img height="20" src="https://img.shields.io/badge/CMake-333333?logo=cmake&amp;logoColor=64B54E" alt="CMake" /> <img height="20" src="https://img.shields.io/badge/pybind11-333333" alt="pybind11" /> <img height="20" src="https://img.shields.io/badge/Git-333333?logo=git&amp;logoColor=F05032" alt="Git" />
-🖥 <img height="20" src="https://img.shields.io/badge/Qt-333333?logo=qt&amp;logoColor=41CD52" alt="Qt" /> <img height="20" src="https://img.shields.io/badge/Windows-333333" alt="Windows" /> <img height="20" src="https://img.shields.io/badge/Linux-333333?logo=linux&amp;logoColor=FCC624" alt="Linux" />
-</pre>
+<table align="center">
+<tbody>
+<tr><td align="center"><img height="20" src="https://img.shields.io/badge/PowerShell-333333?logo=powershell&amp;logoColor=5391FE" alt="PowerShell" /></td><td align="center"><img height="20" src="https://img.shields.io/badge/pybind11-333333" alt="pybind11" /></td><td align="center"><img height="20" src="https://img.shields.io/badge/STM32-333333?logo=stmicroelectronics&amp;logoColor=39A9DC" alt="STM32" /></td><td align="center"><img height="20" src="https://img.shields.io/badge/C%2B%2B-333333?logo=cplusplus&amp;logoColor=659AD2" alt="C++" /></td><td align="center"><img height="20" src="https://img.shields.io/badge/Qt-333333?logo=qt&amp;logoColor=41CD52" alt="Qt" /></td></tr>
+<tr><td align="center"><img height="20" src="https://img.shields.io/badge/CMSIS--DAP-333333?logo=arm&amp;logoColor=0091BD" alt="CMSIS-DAP" /></td><td align="center"><img height="20" src="https://img.shields.io/badge/Python-333333?logo=python&amp;logoColor=3776AB" alt="Python" /></td><td align="center"><img height="20" src="https://img.shields.io/badge/Shell-333333?logo=gnubash&amp;logoColor=4EAA25" alt="Shell" /></td><td align="center"><img height="20" src="https://img.shields.io/badge/TacCap-333333" alt="TacCap" /></td><td align="center"><img height="20" src="https://img.shields.io/badge/CSS-333333" alt="CSS" /></td></tr>
+<tr><td align="center"><img height="20" src="https://img.shields.io/badge/Dockerfile-333333" alt="Dockerfile" /></td><td align="center"><img height="20" src="https://img.shields.io/badge/Pinocchio-333333" alt="Pinocchio" /></td><td align="center"><img height="20" src="https://img.shields.io/badge/Linux-333333?logo=linux&amp;logoColor=FCC624" alt="Linux" /></td><td align="center" colspan="2"><img height="20" src="https://img.shields.io/badge/Windows-333333" alt="Windows" /></td></tr>
+<tr><td align="center"><img height="20" src="https://img.shields.io/badge/LeRobot-333333?logo=huggingface&amp;logoColor=FFD21E" alt="LeRobot" /></td><td align="center"><img height="20" src="https://img.shields.io/badge/Batchfile-333333" alt="Batchfile" /></td><td align="center"><img height="20" src="https://img.shields.io/badge/CMake-333333?logo=cmake&amp;logoColor=64B54E" alt="CMake" /></td><td align="center"><img height="20" src="https://img.shields.io/badge/MeshCat-333333" alt="MeshCat" /></td><td align="center"><img height="20" src="https://img.shields.io/badge/Git-333333?logo=git&amp;logoColor=F05032" alt="Git" /></td></tr>
+</tbody>
+</table>
 <!-- TECH_STACK:END -->
 </td>
 </tr>
