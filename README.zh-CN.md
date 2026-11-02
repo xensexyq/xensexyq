@@ -4,7 +4,7 @@
 
 <table width="100%">
 <tr>
-<td width="50%" valign="top">
+<td width="60%" valign="top">
       <h3>👨‍💻 关于我</h3>
 <!-- ABOUT:START -->
 <p>我主要围绕机器人学与嵌入式系统做工程实践，喜欢把算法、软件接口和真实设备接起来，在联调与问题定位中打磨可用的工具。</p>
@@ -21,12 +21,12 @@
 <p><a href="https://github.com/xensexyq/vio-atlas" title="Curated VIO and visual-inertial SLAM resources: software and hardware synchronization, drivers, calibration and evaluation."><strong>vio-atlas</strong></a> — Curated VIO and visual-inertial SLAM resources: software and hardware synchronization, drivers, calibration and evaluation.</p>
 <!-- PROJECTS:END -->
 </td>
-<td width="50%" valign="top">
+<td width="40%" valign="top">
       <a href="https://github.com/xensexyq">
-        <img width="100%" src="https://github-stats-extended.vercel.app/api?username=xensexyq&amp;show_icons=true&amp;theme=buefy&amp;include_all_commits=true" alt="xensexyq 的 GitHub 统计" />
+        <img width="100%" src="https://github-stats-extended.vercel.app/api?username=xensexyq&amp;show_icons=true&amp;theme=buefy&amp;include_all_commits=true&amp;hide_rank=true&amp;hide_title=true&amp;line_height=16&amp;card_width=360" alt="xensexyq 的 GitHub 统计" />
       </a>
       <a href="https://github.com/xensexyq?tab=repositories">
-        <img width="100%" src="https://github-stats-extended.vercel.app/api/top-langs/?username=xensexyq&amp;theme=buefy&amp;layout=compact&amp;card_width=470" alt="xensexyq 公开仓库使用的语言" />
+        <img width="100%" src="https://github-stats-extended.vercel.app/api/top-langs/?username=xensexyq&amp;theme=buefy&amp;layout=compact&amp;card_width=360&amp;hide_title=true" alt="xensexyq 公开仓库使用的语言" />
       </a>
 <!-- TECH_STACK:START -->
 <h3>🛠 技术栈</h3>

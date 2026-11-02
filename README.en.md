@@ -4,7 +4,7 @@
 
 <table width="100%">
 <tr>
-<td width="50%" valign="top">
+<td width="60%" valign="top">
       <h3>👨‍💻 About Me</h3>
 <!-- ABOUT:START -->
 <p>I build robotics and embedded tools, connecting algorithms to physical devices through hands-on debugging.</p>
@@ -21,12 +21,12 @@
 <p><a href="https://github.com/xensexyq/vio-atlas" title="Curated VIO and visual-inertial SLAM resources: software and hardware synchronization, drivers, calibration and evaluation."><strong>vio-atlas</strong></a> — Curated VIO and visual-inertial SLAM resources: software and hardware synchronization, drivers, calibration and evaluation.</p>
 <!-- PROJECTS:END -->
 </td>
-<td width="50%" valign="top">
+<td width="40%" valign="top">
       <a href="https://github.com/xensexyq">
-        <img width="100%" src="https://github-stats-extended.vercel.app/api?username=xensexyq&amp;show_icons=true&amp;theme=buefy&amp;include_all_commits=true" alt="xensexyq's GitHub statistics" />
+        <img width="100%" src="https://github-stats-extended.vercel.app/api?username=xensexyq&amp;show_icons=true&amp;theme=buefy&amp;include_all_commits=true&amp;hide_rank=true&amp;hide_title=true&amp;line_height=16&amp;card_width=360" alt="xensexyq's GitHub statistics" />
       </a>
       <a href="https://github.com/xensexyq?tab=repositories">
-        <img width="100%" src="https://github-stats-extended.vercel.app/api/top-langs/?username=xensexyq&amp;theme=buefy&amp;layout=compact&amp;card_width=470" alt="Most used languages in xensexyq's public repositories" />
+        <img width="100%" src="https://github-stats-extended.vercel.app/api/top-langs/?username=xensexyq&amp;theme=buefy&amp;layout=compact&amp;card_width=360&amp;hide_title=true" alt="Most used languages in xensexyq's public repositories" />
       </a>
 <!-- TECH_STACK:START -->
 <h3>🛠 Tech Stack</h3>
