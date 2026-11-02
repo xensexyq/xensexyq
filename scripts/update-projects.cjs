@@ -35,7 +35,7 @@ function focusFor(repo) {
 }
 
 function projectLink(repo, owner) {
-  return `<a href="https://github.com/${encodeURIComponent(owner)}/${encodeURIComponent(repo.name)}">${cell(repo.name)}</a>`;
+  return `<a href="https://github.com/${encodeURIComponent(owner)}/${encodeURIComponent(repo.name)}">${flowText(repo.name)}</a>`;
 }
 
 function renderAbout(repos, owner, language = 'en') {
@@ -59,18 +59,11 @@ function renderPortfolio(repos, owner, language = 'en') {
   const en = language === 'en';
   const projects = publicProjects(repos, owner);
   if (!projects.length) return en ? '<p>No public projects to list yet.</p>' : '<p>暂无可展示的公开项目。</p>';
-  return [
-    '<table>',
-    en ? '<thead><tr><th>Project</th><th>Focus / description</th></tr></thead>'
-      : '<thead><tr><th>项目</th><th>方向 / 简介</th></tr></thead>',
-    '<tbody>',
-    ...projects.map(repo => {
-      const area = focusFor(repo);
-      const description = cell(repo.description);
-      return `<tr><td>${projectLink(repo, owner)}</td><td><strong>${en ? area.en : area.zh}</strong>${description ? `<br />${description}` : ''}</td></tr>`;
-    }),
-    '</tbody>', '</table>',
-  ].join('\n');
+  return projects.map(repo => {
+    const area = focusFor(repo);
+    const description = flowText(repo.description);
+    return `<p>${projectLink(repo, owner)}<br /><strong>${en ? area.en : area.zh}</strong>${description ? ` — ${description}` : ''}</p>`;
+  }).join('\n');
 }
 
 function renderProfile(previous, repos, owner, language = 'en', languages = [], texts = []) {
@@ -123,6 +116,20 @@ function cell(value) {
     .replace(/[&<>"'|\\`*_[\]]/g, ch => `&#${ch.codePointAt(0)};`);
 }
 
+// Escape each piece after splitting so entities and links are never damaged.
+// Optional breaks preserve the full visible text and the original link target.
+function flowText(value) {
+  return String(value ?? '').replace(/\s+/g, ' ').trim().split(/( )/).map(token => {
+    const chars = Array.from(token);
+    if (chars.length <= 24) return cell(token) || token;
+    const pieces = [];
+    for (let offset = 0; offset < chars.length; offset += 20) {
+      pieces.push(cell(chars.slice(offset, offset + 20).join('')));
+    }
+    return pieces.join('&#8203;');
+  }).join('');
+}
+
 function eligibleRepos(repos, owner) {
   return repos.filter(repo => !repo.private && !repo.archived
     && repo.owner.login.toLowerCase() === owner.toLowerCase()
@@ -141,7 +148,7 @@ function render(repos, owner, language = 'en') {
     const projects = items.map(repo => {
       const languageLabel = cell(repo.language);
       const description = cell(repo.description);
-      return `<p><a href="https://github.com/${encodeURIComponent(owner)}/${encodeURIComponent(repo.name)}"${description ? ` title="${description}"` : ''}><strong>${cell(repo.name)}</strong></a>${languageLabel ? ` · <code>${languageLabel}</code>` : ''}${description ? ` — ${description}` : ''}</p>`;
+      return `<p><a href="https://github.com/${encodeURIComponent(owner)}/${encodeURIComponent(repo.name)}"${description ? ` title="${description}"` : ''}><strong>${flowText(repo.name)}</strong></a>${languageLabel ? ` · <code>${languageLabel}</code>` : ''}${description ? ` — ${flowText(repo.description)}` : ''}</p>`;
     });
     return projects.join('\n');
   };
@@ -186,18 +193,11 @@ function renderTechStack(repos, owner, language = 'en', repositoryLanguages = []
     }));
   rows[0].items.push(...genericLanguages);
   const populatedRows = rows.filter(group => group.items.length);
-  // Preserve semantic groups and explicit line breaks instead of a bordered grid.
-  const badgeRows = populatedRows.flatMap(group => {
-    const chunks = [];
-    for (let offset = 0; offset < group.items.length; offset += 4) {
-      const badges = group.items.slice(offset, offset + 4)
-        .map(item => `<img height="20" src="${item.src}" alt="${item.label}" />`).join(' ');
-      chunks.push(`${offset === 0 ? group.icon : '  '} ${badges}`);
-    }
-    return chunks;
-  });
+  // A normal paragraph wraps badge images at spaces; <pre> would force scrolling.
+  const badgeRows = populatedRows.map(group => `${group.icon} ${group.items.map(item =>
+    `<img height="20" src="${item.src}" alt="${item.label}" />`).join(' ')}`);
   const content = populatedRows.length
-    ? ['<pre>', ...badgeRows, '</pre>']
+    ? ['<p>', badgeRows.join('<br />\n'), '</p>']
     : [`<p><sub>${en ? 'No stack metadata detected yet.' : '暂未检测到技术栈元数据。'}</sub></p>`];
   return [
     en ? '<h3>🛠 Tech Stack</h3>' : '<h3>🛠 技术栈</h3>',

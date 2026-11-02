@@ -232,22 +232,55 @@ test('About Me summarizes experience without project links, names or repository 
   assert.match(zh,/固件|设备/);
 });
 
-test('tech stack preserves category order and bounded badge rows without a table', () => {
-  const labels = ['C++','Python','Shell','PowerShell','Batchfile','CSS','Dockerfile'];
+test('growing tech stack keeps natural wrap opportunities and category order', () => {
+  const labels = ['C++','Python','Shell','PowerShell','Batchfile','CSS','Dockerfile',
+    ...Array.from({length: 30}, (_, i) => `Language${i}`)];
   const result = renderTechStack([], owner, 'en', labels);
-  assert.ok(result.includes('<pre>'));
+  assert.ok(!result.includes('<pre>'));
   assert.ok(!result.includes('<table'));
   assert.ok(result.includes('💻'));
-  const rows = result.split('<pre>')[1].split('</pre>')[0].trim().split('\n');
-  assert.equal(rows.length, 2);
   assert.equal((result.match(/<img /g) || []).length, labels.length);
+  assert.equal((result.match(/height="20"/g) || []).length, labels.length);
+  assert.ok(result.includes(' /> <img '));
   for (const label of labels) assert.ok(result.includes(`alt="${label}"`));
-  for (const row of rows) {
-    const badges = row.match(/<img /g) || [];
-    assert.ok(badges.length > 0 && badges.length <= 4);
-    assert.equal((row.match(/height="20"/g)||[]).length,badges.length);
-  }
   assert.equal(renderTechStack([], owner, 'en', labels.slice().reverse()), result);
+});
+
+// Reproduce the unbroken names/URLs that previously widened mobile table cells.
+test('long generated names and descriptions wrap without changing text or URLs', () => {
+  const name = 'robotics'.repeat(12);
+  const description = 'https://example.com/' + 'sensor'.repeat(40) + ' <script>& unsafe';
+  const result = render([repo(name, { description })], owner);
+  assert.ok(result.includes(`href="https://github.com/${owner}/${name}"`));
+  const label = result.match(/<strong>(.*?)<\/strong>/)[1];
+  assert.ok(label.includes('&#8203;'));
+  assert.equal(label.replaceAll('&#8203;', ''), name);
+  assert.ok(!result.includes('<script>'));
+  assert.ok(!result.match(/title="[^"]*&#8203;/));
+  assert.ok(result.includes('&#60;script&#62;&#38;'));
+  const portfolio = update.renderProfile(document, [repo(name, {description})], owner)
+    .split('<!-- PORTFOLIO:START -->')[1].split('<!-- PORTFOLIO:END -->')[0];
+  assert.ok(!portfolio.includes('<table'));
+  assert.ok(portfolio.includes('&#8203;'));
+  assert.ok(portfolio.replaceAll('&#8203;', '').includes(name));
+});
+
+test('content refresh preserves wrapping panels, contacts and clearing in both languages', () => {
+  const fs = require('node:fs');
+  const path = require('node:path');
+  for (const [file, language] of [['README.md','en'],['README.en.md','en'],['README.zh-CN.md','zh']]) {
+    const source = fs.readFileSync(path.join(__dirname, '..', file), 'utf8');
+    const repos = Array.from({length: 25}, (_, i) => repo(`camera-${i}`, {description:'SLAM camera tools'}));
+    const next = update.renderProfile(source, repos, owner, language, ['C++','Python','Rust']);
+    const shell = text => text.replace(/<!-- (ABOUT|TECH_STACK|PROJECTS|PORTFOLIO):START -->[\s\S]*?<!-- \1:END -->/g, 'GENERATED');
+    assert.equal(shell(next), shell(source));
+    assert.equal((next.match(/<td width="420"/g) || []).length, 2);
+    assert.ok(next.includes('<table align="left">'));
+    assert.equal((next.match(/<table align="left">/g) || []).length, 2);
+    assert.ok(next.includes('<br clear="all" />'));
+    assert.equal((next.match(/mailto:nxuerobot@gmail.com/g) || []).length, 1);
+    assert.equal(update.renderProfile(next, repos, owner, language, ['C++','Python','Rust']), next);
+  }
 });
 
 test('recent projects use the column width for visible descriptions without a nested table', () => {
