@@ -10,8 +10,8 @@ The GitHub Actions workflow reads all pages of the account's public repository l
 | --- | --- |
 | `ABOUT` | Robotics, embedded systems and robot-perception experience selected from current project areas, without project links or counts |
 | `PORTFOLIO` | Every eligible project, its area and its repository description |
-| `PROJECTS` | The three newest projects, ordered by creation time, with a linked name, language and visible repository description |
-| `TECH_STACK` | Technology badges detected from public repository metadata, language inventories and READMEs, in a compact centered grid, balanced by estimated badge width, with up to five badges per row |
+| `PROJECTS` | The three newest projects, ordered by creation time, with the linked name, language and description flowing in one paragraph per project; no forced line break after the name |
+| `TECH_STACK` | Technology badges detected from public repository metadata, language inventories and READMEs, in an unbordered block with category icons, aligned row starts and at most four badges per line |
 
 Private, archived, forked, foreign-owned and profile repositories are excluded from the overview and catalog. New domains that do not match an existing category appear under **Other tools and resources**. Categories use the repository name, description and topics; they summarize the portfolio, not a person's qualifications. The first matching category is used, so a multidisciplinary project appears once. Raw repository descriptions retain their original language in both versions.
 

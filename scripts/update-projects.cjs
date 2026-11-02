@@ -111,7 +111,7 @@ const STACK_GROUPS = [
     { label: 'pybind11', src: 'https://img.shields.io/badge/pybind11-333333', signals: ['pybind11'], keywords: ['pybind11'] },
     { label: 'Git', src: 'https://img.shields.io/badge/Git-333333?logo=git&amp;logoColor=F05032', signals: ['git'], keywords: ['git clone'] },
   ] },
-  { icon: '🖥', items: [
+  { icon: '🖥️', items: [
     { label: 'Qt', src: 'https://img.shields.io/badge/Qt-333333?logo=qt&amp;logoColor=41CD52', signals: ['qt'], keywords: ['pyqt', 'pyside', 'qt5', 'qt6'] },
     { label: 'Windows', src: 'https://img.shields.io/badge/Windows-333333', signals: ['windows'], keywords: ['windows'] },
     { label: 'Linux', src: 'https://img.shields.io/badge/Linux-333333?logo=linux&amp;logoColor=FCC624', signals: ['linux'], keywords: ['linux'] },
@@ -141,7 +141,7 @@ function render(repos, owner, language = 'en') {
     const projects = items.map(repo => {
       const languageLabel = cell(repo.language);
       const description = cell(repo.description);
-      return `<p><a href="https://github.com/${encodeURIComponent(owner)}/${encodeURIComponent(repo.name)}"${description ? ` title="${description}"` : ''}><strong>${cell(repo.name)}</strong></a>${languageLabel ? ` · <code>${languageLabel}</code>` : ''}${description ? `<br />${description}` : ''}</p>`;
+      return `<p><a href="https://github.com/${encodeURIComponent(owner)}/${encodeURIComponent(repo.name)}"${description ? ` title="${description}"` : ''}><strong>${cell(repo.name)}</strong></a>${languageLabel ? ` · <code>${languageLabel}</code>` : ''}${description ? ` — ${description}` : ''}</p>`;
     });
     return projects.join('\n');
   };
@@ -185,21 +185,19 @@ function renderTechStack(repos, owner, language = 'en', repositoryLanguages = []
       src: `https://img.shields.io/badge/${encodeURIComponent(label.replace(/-/g, '--').replace(/ /g, '_'))}-333333`,
     }));
   rows[0].items.push(...genericLanguages);
-  // Balance badge widths across compact rows instead of leaving short category rows.
-  // The estimate only chooses row membership; images retain their aspect ratios.
-  const badges = rows.flatMap(group => group.items).map(item => ({
-    ...item, weight: item.label.length * 6.5 + (item.src.includes('logo=') ? 24 : 10),
-  })).sort((a, b) => b.weight - a.weight || a.label.localeCompare(b.label, 'en'));
-  const badgeRows = Array.from({ length: Math.ceil(badges.length / 5) }, () => ({ items: [], weight: 0 }));
-  for (const badge of badges) {
-    const row = badgeRows.filter(row => row.items.length < 5)
-      .reduce((best, row) => !best || row.weight < best.weight ? row : best, null);
-    row.items.push(badge);
-    row.weight += badge.weight + 8;
-  }
-  const content = badges.length
-    ? ['<table align="center">', '<tbody>', ...badgeRows.map(row => '<tr>' + row.items
-      .map((item, index) => `<td align="center"${index === row.items.length - 1 && row.items.length < 5 ? ` colspan="${6 - row.items.length}"` : ''}><img height="20" src="${item.src}" alt="${item.label}" /></td>`).join('') + '</tr>'), '</tbody>', '</table>']
+  const populatedRows = rows.filter(group => group.items.length);
+  // Preserve semantic groups and explicit line breaks instead of a bordered grid.
+  const badgeRows = populatedRows.flatMap(group => {
+    const chunks = [];
+    for (let offset = 0; offset < group.items.length; offset += 4) {
+      const badges = group.items.slice(offset, offset + 4)
+        .map(item => `<img height="20" src="${item.src}" alt="${item.label}" />`).join(' ');
+      chunks.push(`${offset === 0 ? group.icon : '  '} ${badges}`);
+    }
+    return chunks;
+  });
+  const content = populatedRows.length
+    ? ['<pre>', ...badgeRows, '</pre>']
     : [`<p><sub>${en ? 'No stack metadata detected yet.' : '暂未检测到技术栈元数据。'}</sub></p>`];
   return [
     en ? '<h3>🛠 Tech Stack</h3>' : '<h3>🛠 技术栈</h3>',

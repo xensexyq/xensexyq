@@ -232,22 +232,20 @@ test('About Me summarizes experience without project links, names or repository 
   assert.match(zh,/固件|设备/);
 });
 
-test('badges use a compact centered grid without empty cells or missing items', () => {
+test('tech stack preserves category order and bounded badge rows without a table', () => {
   const labels = ['C++','Python','Shell','PowerShell','Batchfile','CSS','Dockerfile'];
   const result = renderTechStack([], owner, 'en', labels);
-  assert.ok(result.includes('<table align="center">'));
-  assert.ok(!result.includes('<pre>'));
-  const rows = [...result.matchAll(/<tr>(.*?)<\/tr>/g)].map(match => match[1]);
-  assert.equal(rows.length, Math.ceil(labels.length / 5));
+  assert.ok(result.includes('<pre>'));
+  assert.ok(!result.includes('<table'));
+  assert.ok(result.includes('💻'));
+  const rows = result.split('<pre>')[1].split('</pre>')[0].trim().split('\n');
+  assert.equal(rows.length, 2);
   assert.equal((result.match(/<img /g) || []).length, labels.length);
   for (const label of labels) assert.ok(result.includes(`alt="${label}"`));
   for (const row of rows) {
     const badges = row.match(/<img /g) || [];
-    assert.ok(badges.length > 0 && badges.length <= 5);
+    assert.ok(badges.length > 0 && badges.length <= 4);
     assert.equal((row.match(/height="20"/g)||[]).length,badges.length);
-    const columns = [...row.matchAll(/<td align="center"(?: colspan="(\d+)")?>/g)]
-      .reduce((sum, match) => sum + Number(match[1] || 1), 0);
-    assert.equal(columns, 5);
   }
   assert.equal(renderTechStack([], owner, 'en', labels.slice().reverse()), result);
 });
@@ -256,6 +254,7 @@ test('recent projects use the column width for visible descriptions without a ne
   const result=render([repo('one',{language:'Python',description:'Camera calibration and sensor capture.'}),repo('two',{language:'C++'}),repo('three')],owner);
   assert.equal((result.match(/<p>/g)||[]).length,3);
   assert.ok(!result.includes('<table'));
-  assert.match(result, /<br \/>Camera calibration and sensor capture\./);
+  assert.match(result, / — Camera calibration and sensor capture\./);
+  assert.ok(!result.includes('<br'));
   assert.match(result, /<code>Python<\/code>/);
 });

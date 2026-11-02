@@ -16,9 +16,9 @@
 <!-- ABOUT:END -->
 <!-- PROJECTS:START -->
 <h3>🚀 最新项目 <sub>每日更新 · <a href="https://github.com/xensexyq?tab=repositories&amp;type=source">全部 →</a></sub></h3>
-<p><a href="https://github.com/xensexyq/OKVIS2-X-Gemini335L" title="OKVIS2-X with Gemini 335L capture, calibration, CPU/GPU baselines and dense-mapping integration tools."><strong>OKVIS2-X-Gemini335L</strong></a> · <code>C++</code><br />OKVIS2-X with Gemini 335L capture, calibration, CPU/GPU baselines and dense-mapping integration tools.</p>
-<p><a href="https://github.com/xensexyq/gemini-isaac-ros-workbench" title="Docker Community workbench for Orbbec Gemini cameras, Isaac ROS visual SLAM and depth mapping."><strong>gemini-isaac-ros-workbench</strong></a> · <code>Python</code><br />Docker Community workbench for Orbbec Gemini cameras, Isaac ROS visual SLAM and depth mapping.</p>
-<p><a href="https://github.com/xensexyq/vio-atlas" title="Curated VIO and visual-inertial SLAM resources: software and hardware synchronization, drivers, calibration and evaluation."><strong>vio-atlas</strong></a><br />Curated VIO and visual-inertial SLAM resources: software and hardware synchronization, drivers, calibration and evaluation.</p>
+<p><a href="https://github.com/xensexyq/OKVIS2-X-Gemini335L" title="OKVIS2-X with Gemini 335L capture, calibration, CPU/GPU baselines and dense-mapping integration tools."><strong>OKVIS2-X-Gemini335L</strong></a> · <code>C++</code> — OKVIS2-X with Gemini 335L capture, calibration, CPU/GPU baselines and dense-mapping integration tools.</p>
+<p><a href="https://github.com/xensexyq/gemini-isaac-ros-workbench" title="Docker Community workbench for Orbbec Gemini cameras, Isaac ROS visual SLAM and depth mapping."><strong>gemini-isaac-ros-workbench</strong></a> · <code>Python</code> — Docker Community workbench for Orbbec Gemini cameras, Isaac ROS visual SLAM and depth mapping.</p>
+<p><a href="https://github.com/xensexyq/vio-atlas" title="Curated VIO and visual-inertial SLAM resources: software and hardware synchronization, drivers, calibration and evaluation."><strong>vio-atlas</strong></a> — Curated VIO and visual-inertial SLAM resources: software and hardware synchronization, drivers, calibration and evaluation.</p>
 <!-- PROJECTS:END -->
 </td>
 <td width="50%" valign="top">
@@ -30,14 +30,14 @@
       </a>
 <!-- TECH_STACK:START -->
 <h3>🛠 技术栈</h3>
-<table align="center">
-<tbody>
-<tr><td align="center"><img height="20" src="https://img.shields.io/badge/PowerShell-333333?logo=powershell&amp;logoColor=5391FE" alt="PowerShell" /></td><td align="center"><img height="20" src="https://img.shields.io/badge/pybind11-333333" alt="pybind11" /></td><td align="center"><img height="20" src="https://img.shields.io/badge/STM32-333333?logo=stmicroelectronics&amp;logoColor=39A9DC" alt="STM32" /></td><td align="center"><img height="20" src="https://img.shields.io/badge/C%2B%2B-333333?logo=cplusplus&amp;logoColor=659AD2" alt="C++" /></td><td align="center"><img height="20" src="https://img.shields.io/badge/Qt-333333?logo=qt&amp;logoColor=41CD52" alt="Qt" /></td></tr>
-<tr><td align="center"><img height="20" src="https://img.shields.io/badge/CMSIS--DAP-333333?logo=arm&amp;logoColor=0091BD" alt="CMSIS-DAP" /></td><td align="center"><img height="20" src="https://img.shields.io/badge/Python-333333?logo=python&amp;logoColor=3776AB" alt="Python" /></td><td align="center"><img height="20" src="https://img.shields.io/badge/Shell-333333?logo=gnubash&amp;logoColor=4EAA25" alt="Shell" /></td><td align="center"><img height="20" src="https://img.shields.io/badge/TacCap-333333" alt="TacCap" /></td><td align="center"><img height="20" src="https://img.shields.io/badge/CSS-333333" alt="CSS" /></td></tr>
-<tr><td align="center"><img height="20" src="https://img.shields.io/badge/Dockerfile-333333" alt="Dockerfile" /></td><td align="center"><img height="20" src="https://img.shields.io/badge/Pinocchio-333333" alt="Pinocchio" /></td><td align="center"><img height="20" src="https://img.shields.io/badge/Linux-333333?logo=linux&amp;logoColor=FCC624" alt="Linux" /></td><td align="center" colspan="2"><img height="20" src="https://img.shields.io/badge/Windows-333333" alt="Windows" /></td></tr>
-<tr><td align="center"><img height="20" src="https://img.shields.io/badge/LeRobot-333333?logo=huggingface&amp;logoColor=FFD21E" alt="LeRobot" /></td><td align="center"><img height="20" src="https://img.shields.io/badge/Batchfile-333333" alt="Batchfile" /></td><td align="center"><img height="20" src="https://img.shields.io/badge/CMake-333333?logo=cmake&amp;logoColor=64B54E" alt="CMake" /></td><td align="center"><img height="20" src="https://img.shields.io/badge/MeshCat-333333" alt="MeshCat" /></td><td align="center"><img height="20" src="https://img.shields.io/badge/Git-333333?logo=git&amp;logoColor=F05032" alt="Git" /></td></tr>
-</tbody>
-</table>
+<pre>
+💻 <img height="20" src="https://img.shields.io/badge/C%2B%2B-333333?logo=cplusplus&amp;logoColor=659AD2" alt="C++" /> <img height="20" src="https://img.shields.io/badge/Python-333333?logo=python&amp;logoColor=3776AB" alt="Python" /> <img height="20" src="https://img.shields.io/badge/Shell-333333?logo=gnubash&amp;logoColor=4EAA25" alt="Shell" /> <img height="20" src="https://img.shields.io/badge/PowerShell-333333?logo=powershell&amp;logoColor=5391FE" alt="PowerShell" />
+   <img height="20" src="https://img.shields.io/badge/Batchfile-333333" alt="Batchfile" /> <img height="20" src="https://img.shields.io/badge/CSS-333333" alt="CSS" /> <img height="20" src="https://img.shields.io/badge/Dockerfile-333333" alt="Dockerfile" />
+🤖 <img height="20" src="https://img.shields.io/badge/Pinocchio-333333" alt="Pinocchio" /> <img height="20" src="https://img.shields.io/badge/LeRobot-333333?logo=huggingface&amp;logoColor=FFD21E" alt="LeRobot" /> <img height="20" src="https://img.shields.io/badge/MeshCat-333333" alt="MeshCat" /> <img height="20" src="https://img.shields.io/badge/TacCap-333333" alt="TacCap" />
+🔌 <img height="20" src="https://img.shields.io/badge/STM32-333333?logo=stmicroelectronics&amp;logoColor=39A9DC" alt="STM32" /> <img height="20" src="https://img.shields.io/badge/CMSIS--DAP-333333?logo=arm&amp;logoColor=0091BD" alt="CMSIS-DAP" />
+⚙️ <img height="20" src="https://img.shields.io/badge/CMake-333333?logo=cmake&amp;logoColor=64B54E" alt="CMake" /> <img height="20" src="https://img.shields.io/badge/pybind11-333333" alt="pybind11" /> <img height="20" src="https://img.shields.io/badge/Git-333333?logo=git&amp;logoColor=F05032" alt="Git" />
+🖥️ <img height="20" src="https://img.shields.io/badge/Qt-333333?logo=qt&amp;logoColor=41CD52" alt="Qt" /> <img height="20" src="https://img.shields.io/badge/Windows-333333" alt="Windows" /> <img height="20" src="https://img.shields.io/badge/Linux-333333?logo=linux&amp;logoColor=FCC624" alt="Linux" />
+</pre>
 <!-- TECH_STACK:END -->
 </td>
 </tr>
