@@ -15,7 +15,7 @@ The GitHub Actions workflow reads all pages of the account's public repository l
 
 Private, archived, forked, foreign-owned and profile repositories are excluded from the overview and catalog. New domains that do not match an existing category appear under **Other tools and resources**. Categories use the repository name, description and topics; they summarize the portfolio, not a person's qualifications. The first matching category is used, so a multidisciplinary project appears once. Raw repository descriptions retain their original language in both versions.
 
-The personal opening paragraph, contact details and team collaboration links remain hand-written. Technology badges summarize source mentions, not proficiency or verified hardware support. Overview classification deliberately does not use README text: a resource list may mention technologies the author has never implemented.
+The profile keeps its original two-column layout: introduction, toolbox and contacts on the left; statistics and latest projects on the right. The full catalog and collaboration notes sit in a collapsed section below. The greeting, contact details and team collaboration links remain hand-written. Technology badges summarize source mentions, not proficiency or verified hardware support. Overview classification deliberately does not use README text: a resource list may mention technologies the author has never implemented.
 
 ## 2. When it runs
 
