@@ -4,7 +4,7 @@
 
 <table width="100%">
 <tr>
-<td width="60%" valign="top">
+<td width="50%" valign="top">
       <h3>👨‍💻 关于我</h3>
 <!-- ABOUT:START -->
 <p>我主要围绕机器人学与嵌入式系统做工程实践，喜欢把算法、软件接口和真实设备接起来，在联调与问题定位中打磨可用的工具。</p>
@@ -26,7 +26,7 @@
 </pre>
 <!-- TECH_STACK:END -->
 </td>
-<td width="40%" valign="top">
+<td width="50%" valign="top">
       <a href="https://github.com/xensexyq">
         <img width="100%" src="https://github-stats-extended.vercel.app/api?username=xensexyq&amp;show_icons=true&amp;theme=buefy&amp;include_all_commits=true&amp;hide_rank=false&amp;hide_title=true&amp;line_height=20&amp;card_width=470" alt="xensexyq 的 GitHub 统计" />
       </a>

@@ -4,7 +4,7 @@
 
 <table width="100%">
 <tr>
-<td width="60%" valign="top">
+<td width="50%" valign="top">
       <h3>👨‍💻 About Me</h3>
 <!-- ABOUT:START -->
 <p>I build robotics and embedded tools, connecting algorithms to physical devices through hands-on debugging.</p>
@@ -26,7 +26,7 @@
 </pre>
 <!-- TECH_STACK:END -->
 </td>
-<td width="40%" valign="top">
+<td width="50%" valign="top">
       <a href="https://github.com/xensexyq">
         <img width="100%" src="https://github-stats-extended.vercel.app/api?username=xensexyq&amp;show_icons=true&amp;theme=buefy&amp;include_all_commits=true&amp;hide_rank=false&amp;hide_title=true&amp;line_height=20&amp;card_width=470" alt="xensexyq's GitHub statistics" />
       </a>
