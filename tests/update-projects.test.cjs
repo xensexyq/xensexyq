@@ -28,7 +28,7 @@ test('only original projects are shown and the compact list is limited', () => {
   assert.ok(!result.includes('Latest Forks'));
   assert.ok(!result.includes('<ul>'));
   assert.ok(result.includes('daily ·'));
-  assert.equal((result.match(/<tr>/g) || []).length, 3);
+  assert.equal((result.match(/<p>/g) || []).length, 3);
 });
 test('metadata cannot inject HTML, Markdown images, or extra list items', () => {
   const result = render([repo('demo', { description: '<img> | ![x](url)\nnext & *bold*' })], owner);
@@ -234,19 +234,21 @@ test('About Me summarizes experience without project links, names or repository 
 
 test('badge groups use bounded nonwrapping rows with a consistent image height', () => {
   const result = renderTechStack([], owner, 'en', ['C++','Python','Shell','PowerShell','Batchfile','CSS','Dockerfile']);
-  const rows = [...result.matchAll(/<tr>(.*?)<\/tr>/g)].map(match=>match[1]);
+  assert.ok(result.includes('<pre>'));
+  assert.ok(!result.includes('<table'));
+  const rows = result.split('<pre>')[1].split('</pre>')[0].trim().split('\n');
   assert.ok(rows.length >= 2);
   for (const row of rows) {
     const badges = row.match(/<img /g) || [];
     assert.ok(badges.length > 0 && badges.length <= 4);
-    assert.match(row, /nowrap/);
     assert.equal((row.match(/height="20"/g)||[]).length,badges.length);
   }
 });
 
-test('recent project names and languages have separate left and right aligned cells', () => {
-  const result=render([repo('one',{language:'Python'}),repo('two',{language:'C++'}),repo('three')],owner);
-  assert.equal((result.match(/<tr>/g)||[]).length,3);
-  assert.equal((result.match(/align="left"/g)||[]).length,3);
-  assert.equal((result.match(/align="right"/g)||[]).length,3);
+test('recent projects use the column width for visible descriptions without a nested table', () => {
+  const result=render([repo('one',{language:'Python',description:'Camera calibration and sensor capture.'}),repo('two',{language:'C++'}),repo('three')],owner);
+  assert.equal((result.match(/<p>/g)||[]).length,3);
+  assert.ok(!result.includes('<table'));
+  assert.match(result, /<br \/>Camera calibration and sensor capture\./);
+  assert.match(result, /<code>Python<\/code>/);
 });

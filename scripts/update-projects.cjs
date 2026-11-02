@@ -141,9 +141,9 @@ function render(repos, owner, language = 'en') {
     const projects = items.map(repo => {
       const languageLabel = cell(repo.language);
       const description = cell(repo.description);
-      return `<tr><td width="100%" align="left"><a href="https://github.com/${encodeURIComponent(owner)}/${encodeURIComponent(repo.name)}"${description ? ` title="${description}"` : ''}><strong>${cell(repo.name)}</strong></a></td><td align="right" nowrap>${languageLabel ? `<code>${languageLabel}</code>` : '—'}</td></tr>`;
+      return `<p><a href="https://github.com/${encodeURIComponent(owner)}/${encodeURIComponent(repo.name)}"${description ? ` title="${description}"` : ''}><strong>${cell(repo.name)}</strong></a>${languageLabel ? ` · <code>${languageLabel}</code>` : ''}${description ? `<br />${description}` : ''}</p>`;
     });
-    return ['<table width="100%">', '<tbody>', ...projects, '</tbody>', '</table>'].join('\n');
+    return projects.join('\n');
   };
   const allProjects = `https://github.com/${encodeURIComponent(owner)}?tab=repositories&amp;type=source`;
   return [
@@ -192,12 +192,12 @@ function renderTechStack(repos, owner, language = 'en', repositoryLanguages = []
     for (let offset = 0; offset < group.items.length; offset += 4) {
       const badges = group.items.slice(offset, offset + 4)
         .map(item => `<img height="20" src="${item.src}" alt="${item.label}" />`).join(' ');
-      chunks.push(`<tr><td width="24" align="center" valign="middle">${offset === 0 ? group.icon : '&#160;'}</td><td width="100%" nowrap valign="middle">${badges}</td></tr>`);
+      chunks.push(`${offset === 0 ? group.icon : '  '} ${badges}`);
     }
     return chunks;
   });
   const content = populatedRows.length
-    ? ['<table width="100%">', '<tbody>', ...badgeRows, '</tbody>', '</table>']
+    ? ['<pre>', ...badgeRows, '</pre>']
     : [`<p><sub>${en ? 'No stack metadata detected yet.' : '暂未检测到技术栈元数据。'}</sub></p>`];
   return [
     en ? '<h3>🛠 Tech Stack</h3>' : '<h3>🛠 技术栈</h3>',

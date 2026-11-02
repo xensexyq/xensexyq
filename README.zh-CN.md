@@ -14,45 +14,36 @@
   <li><strong>机器人感知：</strong>集成相机采集、标定与 VIO / SLAM 流程，重视时序与实验复现。</li>
 </ul>
 <!-- ABOUT:END -->
+<!-- PROJECTS:START -->
+<h3>🚀 最新项目 <sub>每日更新 · <a href="https://github.com/xensexyq?tab=repositories&amp;type=source">全部 →</a></sub></h3>
+<p><a href="https://github.com/xensexyq/OKVIS2-X-Gemini335L" title="OKVIS2-X with Gemini 335L capture, calibration, CPU/GPU baselines and dense-mapping integration tools."><strong>OKVIS2-X-Gemini335L</strong></a> · <code>C++</code><br />OKVIS2-X with Gemini 335L capture, calibration, CPU/GPU baselines and dense-mapping integration tools.</p>
+<p><a href="https://github.com/xensexyq/gemini-isaac-ros-workbench" title="Docker Community workbench for Orbbec Gemini cameras, Isaac ROS visual SLAM and depth mapping."><strong>gemini-isaac-ros-workbench</strong></a> · <code>Python</code><br />Docker Community workbench for Orbbec Gemini cameras, Isaac ROS visual SLAM and depth mapping.</p>
+<p><a href="https://github.com/xensexyq/vio-atlas" title="Curated VIO and visual-inertial SLAM resources: software and hardware synchronization, drivers, calibration and evaluation."><strong>vio-atlas</strong></a><br />Curated VIO and visual-inertial SLAM resources: software and hardware synchronization, drivers, calibration and evaluation.</p>
+<!-- PROJECTS:END -->
 </td>
 <td width="50%" valign="top">
       <a href="https://github.com/xensexyq">
         <img width="100%" src="https://github-stats-extended.vercel.app/api?username=xensexyq&amp;show_icons=true&amp;theme=buefy&amp;include_all_commits=true" alt="xensexyq 的 GitHub 统计" />
       </a>
       <a href="https://github.com/xensexyq?tab=repositories">
-        <img width="100%" src="https://github-stats-extended.vercel.app/api/top-langs/?username=xensexyq&amp;theme=buefy&amp;layout=compact" alt="xensexyq 公开仓库使用的语言" />
+        <img width="100%" src="https://github-stats-extended.vercel.app/api/top-langs/?username=xensexyq&amp;theme=buefy&amp;layout=compact&amp;card_width=470" alt="xensexyq 公开仓库使用的语言" />
       </a>
+<!-- TECH_STACK:START -->
+<h3>🛠 技术栈</h3>
+<pre>
+💻 <img height="20" src="https://img.shields.io/badge/C%2B%2B-333333?logo=cplusplus&amp;logoColor=659AD2" alt="C++" /> <img height="20" src="https://img.shields.io/badge/Python-333333?logo=python&amp;logoColor=3776AB" alt="Python" /> <img height="20" src="https://img.shields.io/badge/Shell-333333?logo=gnubash&amp;logoColor=4EAA25" alt="Shell" /> <img height="20" src="https://img.shields.io/badge/PowerShell-333333?logo=powershell&amp;logoColor=5391FE" alt="PowerShell" />
+   <img height="20" src="https://img.shields.io/badge/Batchfile-333333" alt="Batchfile" /> <img height="20" src="https://img.shields.io/badge/CSS-333333" alt="CSS" /> <img height="20" src="https://img.shields.io/badge/Dockerfile-333333" alt="Dockerfile" />
+🤖 <img height="20" src="https://img.shields.io/badge/Pinocchio-333333" alt="Pinocchio" /> <img height="20" src="https://img.shields.io/badge/LeRobot-333333?logo=huggingface&amp;logoColor=FFD21E" alt="LeRobot" /> <img height="20" src="https://img.shields.io/badge/MeshCat-333333" alt="MeshCat" /> <img height="20" src="https://img.shields.io/badge/TacCap-333333" alt="TacCap" />
+🔌 <img height="20" src="https://img.shields.io/badge/STM32-333333?logo=stmicroelectronics&amp;logoColor=39A9DC" alt="STM32" /> <img height="20" src="https://img.shields.io/badge/CMSIS--DAP-333333?logo=arm&amp;logoColor=0091BD" alt="CMSIS-DAP" />
+⚙️ <img height="20" src="https://img.shields.io/badge/CMake-333333?logo=cmake&amp;logoColor=64B54E" alt="CMake" /> <img height="20" src="https://img.shields.io/badge/pybind11-333333" alt="pybind11" /> <img height="20" src="https://img.shields.io/badge/Git-333333?logo=git&amp;logoColor=F05032" alt="Git" />
+🖥 <img height="20" src="https://img.shields.io/badge/Qt-333333?logo=qt&amp;logoColor=41CD52" alt="Qt" /> <img height="20" src="https://img.shields.io/badge/Windows-333333" alt="Windows" /> <img height="20" src="https://img.shields.io/badge/Linux-333333?logo=linux&amp;logoColor=FCC624" alt="Linux" />
+</pre>
+<!-- TECH_STACK:END -->
 </td>
 </tr>
 <tr>
-<td width="50%" valign="top">
-<!-- PROJECTS:START -->
-<h3>🚀 最新项目 <sub>每日更新 · <a href="https://github.com/xensexyq?tab=repositories&amp;type=source">全部 →</a></sub></h3>
-<table width="100%">
-<tbody>
-<tr><td width="100%" align="left"><a href="https://github.com/xensexyq/OKVIS2-X-Gemini335L" title="OKVIS2-X with Gemini 335L capture, calibration, CPU/GPU baselines and dense-mapping integration tools."><strong>OKVIS2-X-Gemini335L</strong></a></td><td align="right" nowrap><code>C++</code></td></tr>
-<tr><td width="100%" align="left"><a href="https://github.com/xensexyq/gemini-isaac-ros-workbench" title="Docker Community workbench for Orbbec Gemini cameras, Isaac ROS visual SLAM and depth mapping."><strong>gemini-isaac-ros-workbench</strong></a></td><td align="right" nowrap><code>Python</code></td></tr>
-<tr><td width="100%" align="left"><a href="https://github.com/xensexyq/vio-atlas" title="Curated VIO and visual-inertial SLAM resources: software and hardware synchronization, drivers, calibration and evaluation."><strong>vio-atlas</strong></a></td><td align="right" nowrap>—</td></tr>
-</tbody>
-</table>
-<!-- PROJECTS:END -->
-<h3>🤝 联系我</h3>
+<td colspan="2">
 <p>📧 邮箱： <a href="mailto:nxuerobot@gmail.com">nxuerobot@gmail.com</a> · <a href="https://space.bilibili.com/356577945">Bilibili</a></p>
-</td>
-<td width="50%" valign="top">
-<!-- TECH_STACK:START -->
-<h3>🛠 技术栈</h3>
-<table width="100%">
-<tbody>
-<tr><td width="24" align="center" valign="middle">💻</td><td width="100%" nowrap valign="middle"><img height="20" src="https://img.shields.io/badge/C%2B%2B-333333?logo=cplusplus&amp;logoColor=659AD2" alt="C++" /> <img height="20" src="https://img.shields.io/badge/Python-333333?logo=python&amp;logoColor=3776AB" alt="Python" /> <img height="20" src="https://img.shields.io/badge/Shell-333333?logo=gnubash&amp;logoColor=4EAA25" alt="Shell" /> <img height="20" src="https://img.shields.io/badge/PowerShell-333333?logo=powershell&amp;logoColor=5391FE" alt="PowerShell" /></td></tr>
-<tr><td width="24" align="center" valign="middle">&#160;</td><td width="100%" nowrap valign="middle"><img height="20" src="https://img.shields.io/badge/Batchfile-333333" alt="Batchfile" /> <img height="20" src="https://img.shields.io/badge/CSS-333333" alt="CSS" /> <img height="20" src="https://img.shields.io/badge/Dockerfile-333333" alt="Dockerfile" /></td></tr>
-<tr><td width="24" align="center" valign="middle">🤖</td><td width="100%" nowrap valign="middle"><img height="20" src="https://img.shields.io/badge/Pinocchio-333333" alt="Pinocchio" /> <img height="20" src="https://img.shields.io/badge/LeRobot-333333?logo=huggingface&amp;logoColor=FFD21E" alt="LeRobot" /> <img height="20" src="https://img.shields.io/badge/MeshCat-333333" alt="MeshCat" /> <img height="20" src="https://img.shields.io/badge/TacCap-333333" alt="TacCap" /></td></tr>
-<tr><td width="24" align="center" valign="middle">🔌</td><td width="100%" nowrap valign="middle"><img height="20" src="https://img.shields.io/badge/STM32-333333?logo=stmicroelectronics&amp;logoColor=39A9DC" alt="STM32" /> <img height="20" src="https://img.shields.io/badge/CMSIS--DAP-333333?logo=arm&amp;logoColor=0091BD" alt="CMSIS-DAP" /></td></tr>
-<tr><td width="24" align="center" valign="middle">⚙️</td><td width="100%" nowrap valign="middle"><img height="20" src="https://img.shields.io/badge/CMake-333333?logo=cmake&amp;logoColor=64B54E" alt="CMake" /> <img height="20" src="https://img.shields.io/badge/pybind11-333333" alt="pybind11" /> <img height="20" src="https://img.shields.io/badge/Git-333333?logo=git&amp;logoColor=F05032" alt="Git" /></td></tr>
-<tr><td width="24" align="center" valign="middle">🖥</td><td width="100%" nowrap valign="middle"><img height="20" src="https://img.shields.io/badge/Qt-333333?logo=qt&amp;logoColor=41CD52" alt="Qt" /> <img height="20" src="https://img.shields.io/badge/Windows-333333" alt="Windows" /> <img height="20" src="https://img.shields.io/badge/Linux-333333?logo=linux&amp;logoColor=FCC624" alt="Linux" /></td></tr>
-</tbody>
-</table>
-<!-- TECH_STACK:END -->
 </td>
 </tr>
 </table>
