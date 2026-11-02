@@ -1,10 +1,10 @@
 ## 你好，我是 Yuquan Xue 👋
 
-[English](README.md) · [简体中文](README.zh-CN.md)
+[English](README.md) · [简体中文](README.zh-CN.md) · [📱 手机单栏](README.mobile.zh-CN.md)
 
-<table align="left">
+<table>
 <tr>
-<td width="420" valign="top">
+<td width="50%" valign="top">
       <h3>👨‍💻 关于我</h3>
 <!-- ABOUT:START -->
 <p>我主要围绕机器人学与嵌入式系统做工程实践，喜欢把算法、软件接口和真实设备接起来，在联调与问题定位中打磨可用的工具。</p>
@@ -26,11 +26,7 @@
 <!-- TECH_STACK:END -->
 <p>📧 邮箱： <a href="mailto:nxuerobot@gmail.com">nxuerobot@gmail.com</a> · <a href="https://space.bilibili.com/356577945">Bilibili</a></p>
 </td>
-</tr>
-</table>
-<table align="left">
-<tr>
-<td width="420" valign="top">
+<td width="50%" valign="top">
       <a href="https://github.com/xensexyq">
         <img width="100%" src="https://github-stats-extended.vercel.app/api?username=xensexyq&amp;show_icons=true&amp;theme=buefy&amp;include_all_commits=true&amp;hide_rank=false&amp;hide_title=true&amp;line_height=20&amp;card_width=470" alt="xensexyq 的 GitHub 统计" />
       </a>
@@ -46,7 +42,6 @@
 </td>
 </tr>
 </table>
-<br clear="all" />
 
 <details>
 <summary>完整项目目录与协作</summary>

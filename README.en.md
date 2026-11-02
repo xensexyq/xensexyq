@@ -1,10 +1,10 @@
 ## Hi there! I'm Yuquan Xue 👋
 
-[English](README.md) · [简体中文](README.zh-CN.md)
+[English](README.md) · [简体中文](README.zh-CN.md) · [📱 Mobile view](README.mobile.md)
 
-<table align="left">
+<table>
 <tr>
-<td width="420" valign="top">
+<td width="50%" valign="top">
       <h3>👨‍💻 About Me</h3>
 <!-- ABOUT:START -->
 <p>I build robotics and embedded tools, connecting algorithms to physical devices through hands-on debugging.</p>
@@ -26,11 +26,7 @@
 <!-- TECH_STACK:END -->
 <p>📧 Email: <a href="mailto:nxuerobot@gmail.com">nxuerobot@gmail.com</a> · <a href="https://space.bilibili.com/356577945">Bilibili</a></p>
 </td>
-</tr>
-</table>
-<table align="left">
-<tr>
-<td width="420" valign="top">
+<td width="50%" valign="top">
       <a href="https://github.com/xensexyq">
         <img width="100%" src="https://github-stats-extended.vercel.app/api?username=xensexyq&amp;show_icons=true&amp;theme=buefy&amp;include_all_commits=true&amp;hide_rank=false&amp;hide_title=true&amp;line_height=20&amp;card_width=470" alt="xensexyq's GitHub statistics" />
       </a>
@@ -46,7 +42,6 @@
 </td>
 </tr>
 </table>
-<br clear="all" />
 
 <details>
 <summary>Full project catalog and collaboration</summary>

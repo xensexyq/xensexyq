@@ -251,7 +251,8 @@ async function update({ github, context, core }) {
       }
     }));
   const changes = [];
-  for (const [path, language] of [['README.md', 'en'], ['README.en.md', 'en'], ['README.zh-CN.md', 'zh']]) {
+  for (const [path, language] of [['README.md', 'en'], ['README.en.md', 'en'], ['README.zh-CN.md', 'zh'],
+    ['README.mobile.md', 'en'], ['README.mobile.zh-CN.md', 'zh']]) {
     const { data: file } = await github.rest.repos.getContent({ owner, repo, path, ref: branch });
     if (file.type !== 'file' || file.encoding !== 'base64') {
       throw new Error(`${path} is not a readable base64 file.`);

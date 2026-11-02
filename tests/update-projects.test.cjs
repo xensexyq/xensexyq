@@ -93,7 +93,7 @@ function mock(previous, fail = false, repos = [], languageData = {}, readmeData 
 }
 test('API updates all language files on the default branch with concurrency protection', async () => {
   const env = mock(document); await update(env);
-  assert.equal(env.writes.length, 3);
+  assert.equal(env.writes.length, 5);
   assert.equal(env.writes[0].path, 'README.md');
   assert.equal(env.writes[0].sha, 'current-sha');
   assert.equal(env.writes[0].branch, 'main');
@@ -113,7 +113,7 @@ test('API language inventories and README metadata feed the generated tech stack
 });
 test('unchanged content or failed API never writes', async () => {
   const current = language => update.renderProfile(document, [], owner, language);
-  const env = mock({ 'README.md': current('en'), 'README.en.md': current('en'), 'README.zh-CN.md': current('zh') }); await update(env);
+  const env = mock({ 'README.md': current('en'), 'README.en.md': current('en'), 'README.zh-CN.md': current('zh'), 'README.mobile.md': current('en'), 'README.mobile.zh-CN.md': current('zh') }); await update(env);
   assert.equal(env.writes.length, 0);
   const failed = mock(document, true);
   await assert.rejects(update(failed), /API unavailable/);
@@ -190,7 +190,7 @@ test('Chinese overview is regenerated and descriptions are escaped, including un
 test('all four sections are idempotent and malformed overview markers prevent every write', async () => {
   const repos = [repo('a', { description: 'STM32 firmware' }), repo('b', { description: 'VIO calibration' })];
   const current = {};
-  for (const [file, lang] of [['README.md', 'en'], ['README.en.md', 'en'], ['README.zh-CN.md', 'zh']]) {
+  for (const [file, lang] of [['README.md', 'en'], ['README.en.md', 'en'], ['README.zh-CN.md', 'zh'], ['README.mobile.md', 'en'], ['README.mobile.zh-CN.md', 'zh']]) {
     current[file] = update.renderProfile(document, repos, owner, lang);
   }
   const same = mock(current, false, repos);
@@ -265,19 +265,25 @@ test('long generated names and descriptions wrap without changing text or URLs',
   assert.ok(portfolio.replaceAll('&#8203;', '').includes(name));
 });
 
-test('content refresh preserves wrapping panels, contacts and clearing in both languages', () => {
+test('content refresh preserves equal-height desktop and single-column mobile layouts', () => {
   const fs = require('node:fs');
   const path = require('node:path');
-  for (const [file, language] of [['README.md','en'],['README.en.md','en'],['README.zh-CN.md','zh']]) {
+  for (const [file, language] of [['README.md','en'],['README.en.md','en'],['README.zh-CN.md','zh'],['README.mobile.md','en'],['README.mobile.zh-CN.md','zh']]) {
     const source = fs.readFileSync(path.join(__dirname, '..', file), 'utf8');
     const repos = Array.from({length: 25}, (_, i) => repo(`camera-${i}`, {description:'SLAM camera tools'}));
     const next = update.renderProfile(source, repos, owner, language, ['C++','Python','Rust']);
     const shell = text => text.replace(/<!-- (ABOUT|TECH_STACK|PROJECTS|PORTFOLIO):START -->[\s\S]*?<!-- \1:END -->/g, 'GENERATED');
     assert.equal(shell(next), shell(source));
-    assert.equal((next.match(/<td width="420"/g) || []).length, 2);
-    assert.ok(next.includes('<table align="left">'));
-    assert.equal((next.match(/<table align="left">/g) || []).length, 2);
-    assert.ok(next.includes('<br clear="all" />'));
+    if (file.includes('.mobile')) {
+      assert.ok(!next.includes('<table'));
+      assert.ok(next.includes('README.mobile.zh-CN.md'));
+    } else {
+      assert.equal((next.match(/<table>/g) || []).length, 1);
+      assert.equal((next.match(/<tr>/g) || []).length, 1);
+      assert.equal((next.match(/<td width="50%" valign="top">/g) || []).length, 2);
+      assert.ok(next.includes('README.mobile'));
+    }
+    assert.ok(!next.includes('height="650"'));
     assert.equal((next.match(/mailto:nxuerobot@gmail.com/g) || []).length, 1);
     assert.equal(update.renderProfile(next, repos, owner, language, ['C++','Python','Rust']), next);
   }
@@ -290,4 +296,23 @@ test('recent projects use the column width for visible descriptions without a ne
   assert.match(result, / — Camera calibration and sensor capture\./);
   assert.ok(!result.includes('<br'));
   assert.match(result, /<code>Python<\/code>/);
+});
+
+test('invalid mobile markers prevent desktop and mobile writes together', async () => {
+  const sources = Object.fromEntries(['README.md', 'README.en.md', 'README.zh-CN.md',
+    'README.mobile.md', 'README.mobile.zh-CN.md'].map(path => [path, document]));
+  sources['README.mobile.zh-CN.md'] = document.replace('<!-- PROJECTS:END -->', '');
+  const env = mock(sources);
+  await assert.rejects(update(env), /PROJECTS marker pair/);
+  assert.equal(env.writes.length, 0);
+});
+
+test('desktop and mobile receive identical generated sections in each language', async () => {
+  const env = mock(document, false, [repo('camera', {description:'VIO camera integration'})]);
+  await update(env);
+  const content = Object.fromEntries(env.writes.map(write =>
+    [write.path, Buffer.from(write.content, 'base64').toString('utf8')]));
+  assert.equal(content['README.md'], content['README.en.md']);
+  assert.equal(content['README.md'], content['README.mobile.md']);
+  assert.equal(content['README.zh-CN.md'], content['README.mobile.zh-CN.md']);
 });
