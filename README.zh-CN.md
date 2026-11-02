@@ -14,20 +14,6 @@
   <li><strong>机器人感知：</strong>集成相机采集、标定与 VIO / SLAM 流程，重视时序与实验复现。</li>
 </ul>
 <!-- ABOUT:END -->
-<!-- PROJECTS:START -->
-<h3>🚀 最新项目 <sub>每日更新 · <a href="https://github.com/xensexyq?tab=repositories&amp;type=source">全部 →</a></sub></h3>
-<p><a href="https://github.com/xensexyq/OKVIS2-X-Gemini335L" title="OKVIS2-X with Gemini 335L capture, calibration, CPU/GPU baselines and dense-mapping integration tools."><strong>OKVIS2-X-Gemini335L</strong></a> · <code>C++</code> — OKVIS2-X with Gemini 335L capture, calibration, CPU/GPU baselines and dense-mapping integration tools.</p>
-<p><a href="https://github.com/xensexyq/gemini-isaac-ros-workbench" title="Docker Community workbench for Orbbec Gemini cameras, Isaac ROS visual SLAM and depth mapping."><strong>gemini-isaac-ros-workbench</strong></a> · <code>Python</code> — Docker Community workbench for Orbbec Gemini cameras, Isaac ROS visual SLAM and depth mapping.</p>
-<p><a href="https://github.com/xensexyq/vio-atlas" title="Curated VIO and visual-inertial SLAM resources: software and hardware synchronization, drivers, calibration and evaluation."><strong>vio-atlas</strong></a> — Curated VIO and visual-inertial SLAM resources: software and hardware synchronization, drivers, calibration and evaluation.</p>
-<!-- PROJECTS:END -->
-</td>
-<td width="40%" valign="top">
-      <a href="https://github.com/xensexyq">
-        <img width="100%" src="https://github-stats-extended.vercel.app/api?username=xensexyq&amp;show_icons=true&amp;theme=buefy&amp;include_all_commits=true&amp;hide_rank=false&amp;hide_title=true&amp;line_height=20&amp;card_width=470" alt="xensexyq 的 GitHub 统计" />
-      </a>
-      <a href="https://github.com/xensexyq?tab=repositories">
-        <img width="100%" src="https://github-stats-extended.vercel.app/api/top-langs/?username=xensexyq&amp;theme=buefy&amp;layout=compact&amp;card_width=360&amp;hide_title=true" alt="xensexyq 公开仓库使用的语言" />
-      </a>
 <!-- TECH_STACK:START -->
 <h3>🛠 技术栈</h3>
 <pre>
@@ -39,6 +25,20 @@
 🖥️ <img height="20" src="https://img.shields.io/badge/Qt-333333?logo=qt&amp;logoColor=41CD52" alt="Qt" /> <img height="20" src="https://img.shields.io/badge/Windows-333333" alt="Windows" /> <img height="20" src="https://img.shields.io/badge/Linux-333333?logo=linux&amp;logoColor=FCC624" alt="Linux" />
 </pre>
 <!-- TECH_STACK:END -->
+</td>
+<td width="40%" valign="top">
+      <a href="https://github.com/xensexyq">
+        <img width="100%" src="https://github-stats-extended.vercel.app/api?username=xensexyq&amp;show_icons=true&amp;theme=buefy&amp;include_all_commits=true&amp;hide_rank=false&amp;hide_title=true&amp;line_height=20&amp;card_width=470" alt="xensexyq 的 GitHub 统计" />
+      </a>
+      <a href="https://github.com/xensexyq?tab=repositories">
+        <img width="100%" src="https://github-stats-extended.vercel.app/api/top-langs/?username=xensexyq&amp;theme=buefy&amp;layout=compact&amp;card_width=360&amp;hide_title=true" alt="xensexyq 公开仓库使用的语言" />
+      </a>
+<!-- PROJECTS:START -->
+<h3>🚀 最新项目 <sub>每日更新 · <a href="https://github.com/xensexyq?tab=repositories&amp;type=source">全部 →</a></sub></h3>
+<p><a href="https://github.com/xensexyq/OKVIS2-X-Gemini335L" title="OKVIS2-X with Gemini 335L capture, calibration, CPU/GPU baselines and dense-mapping integration tools."><strong>OKVIS2-X-Gemini335L</strong></a> · <code>C++</code> — OKVIS2-X with Gemini 335L capture, calibration, CPU/GPU baselines and dense-mapping integration tools.</p>
+<p><a href="https://github.com/xensexyq/gemini-isaac-ros-workbench" title="Docker Community workbench for Orbbec Gemini cameras, Isaac ROS visual SLAM and depth mapping."><strong>gemini-isaac-ros-workbench</strong></a> · <code>Python</code> — Docker Community workbench for Orbbec Gemini cameras, Isaac ROS visual SLAM and depth mapping.</p>
+<p><a href="https://github.com/xensexyq/vio-atlas" title="Curated VIO and visual-inertial SLAM resources: software and hardware synchronization, drivers, calibration and evaluation."><strong>vio-atlas</strong></a> — Curated VIO and visual-inertial SLAM resources: software and hardware synchronization, drivers, calibration and evaluation.</p>
+<!-- PROJECTS:END -->
 </td>
 </tr>
 <tr>
