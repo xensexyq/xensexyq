@@ -4,6 +4,77 @@ const END = '<!-- PROJECTS:END -->';
 const STACK_START = '<!-- TECH_STACK:START -->';
 const STACK_END = '<!-- TECH_STACK:END -->';
 
+// Classify repository metadata, not arbitrary technologies cited in a README.
+// Unknown domains still appear in the count and complete project catalog.
+const FOCUS_AREAS = [
+  { en: 'Robot control and simulation', zh: '机器人控制与仿真',
+    pattern: /\b(robot|robotics|pinocchio|meshcat|kinematics|control[-_]sim|lerobot|gripper|taccap|fr3)\b|机械臂|机器人|夹爪/i },
+  { en: 'Embedded systems and device interfaces', zh: '嵌入式与设备接口',
+    pattern: /\b(stm32\w*|cmsis[- ]dap|firmware|modbus|rs485|embedded)\b|嵌入式|固件|传感器/i },
+  { en: 'Vision and state estimation', zh: '视觉与状态估计',
+    pattern: /\b(vio|slam|vslam|okvis\w*|visual[- ]inertial|camera\w*|gemini|nvblox)\b|视觉|相机|建图/i },
+  { en: 'Other tools and resources', zh: '其他工具与资料' },
+];
+
+function publicProjects(repos, owner) {
+  return eligibleRepos(repos, owner).filter(repo => !repo.fork)
+    .sort((a, b) => a.name.localeCompare(b.name, 'en'));
+}
+
+function focusFor(repo) {
+  const metadata = [repo.name, repo.description, ...(repo.topics || [])].filter(Boolean).join(' ');
+  return FOCUS_AREAS.find(area => area.pattern?.test(metadata)) || FOCUS_AREAS.at(-1);
+}
+
+function projectLink(repo, owner) {
+  return `<a href="https://github.com/${encodeURIComponent(owner)}/${encodeURIComponent(repo.name)}">${cell(repo.name)}</a>`;
+}
+
+function renderAbout(repos, owner, language = 'en') {
+  const projects = publicProjects(repos, owner);
+  const en = language === 'en';
+  const lines = [en
+    ? `<p>My ${projects.length} public project${projects.length === 1 ? ' covers' : 's cover'} the following areas, from hardware interfaces to simulation and perception tooling.</p>`
+    : `<p>我的 ${projects.length} 个公开项目涵盖以下方向，连接硬件接口、仿真与感知工具。</p>`];
+  const areas = FOCUS_AREAS.map(area => ({ area, projects: projects.filter(repo => focusFor(repo) === area) }))
+    .filter(group => group.projects.length);
+  if (areas.length) {
+    lines.push('<ul>', ...areas.map(group =>
+      `  <li><strong>${en ? group.area.en : group.area.zh}</strong> · ${group.projects.length} — ${group.projects.slice(0, 2).map(repo => projectLink(repo, owner)).join(', ')}</li>`), '</ul>');
+  } else {
+    lines.push(en ? '<p>Public project details will appear here as repositories are added.</p>'
+      : '<p>新增公开仓库后，这里会自动显示项目方向。</p>');
+  }
+  return lines.join('\n');
+}
+
+function renderPortfolio(repos, owner, language = 'en') {
+  const en = language === 'en';
+  const projects = publicProjects(repos, owner);
+  if (!projects.length) return en ? '<p>No public projects to list yet.</p>' : '<p>暂无可展示的公开项目。</p>';
+  return [
+    '<table>',
+    en ? '<thead><tr><th>Project</th><th>Focus / description</th></tr></thead>'
+      : '<thead><tr><th>项目</th><th>方向 / 简介</th></tr></thead>',
+    '<tbody>',
+    ...projects.map(repo => {
+      const area = focusFor(repo);
+      const description = cell(repo.description);
+      return `<tr><td>${projectLink(repo, owner)}</td><td><strong>${en ? area.en : area.zh}</strong>${description ? `<br />${description}` : ''}</td></tr>`;
+    }),
+    '</tbody>', '</table>',
+  ].join('\n');
+}
+
+function renderProfile(previous, repos, owner, language = 'en', languages = [], texts = []) {
+  let next = replaceMarkedSection(previous, renderAbout(repos, owner, language),
+    '<!-- ABOUT:START -->', '<!-- ABOUT:END -->', 'ABOUT');
+  next = replaceMarkedSection(next, renderPortfolio(repos, owner, language),
+    '<!-- PORTFOLIO:START -->', '<!-- PORTFOLIO:END -->', 'PORTFOLIO');
+  next = replaceSection(next, render(repos, owner, language));
+  return replaceTechStack(next, renderTechStack(repos, owner, language, languages, texts));
+}
+
 const STACK_GROUPS = [
   { icon: '💻', items: [
     { label: 'C++', src: 'https://img.shields.io/badge/C%2B%2B-333333?logo=cplusplus&amp;logoColor=659AD2', signals: ['c++', 'cpp'] },
@@ -167,27 +238,25 @@ async function update({ github, context, core }) {
       }
     }));
   const changes = [];
-  for (const [path, language] of [['README.md', 'en'], ['README.en.md', 'en']]) {
+  for (const [path, language] of [['README.md', 'en'], ['README.en.md', 'en'], ['README.zh-CN.md', 'zh']]) {
     const { data: file } = await github.rest.repos.getContent({ owner, repo, path, ref: branch });
     if (file.type !== 'file' || file.encoding !== 'base64') {
       throw new Error(`${path} is not a readable base64 file.`);
     }
     const previous = Buffer.from(file.content, 'base64').toString('utf8');
-    const withProjects = replaceSection(previous, render(repos, owner, language));
-    const next = replaceTechStack(withProjects,
-      renderTechStack(repos, owner, language, [...repositoryLanguages], repositoryTexts));
+    const next = renderProfile(previous, repos, owner, language, [...repositoryLanguages], repositoryTexts);
     if (next !== previous) changes.push({ path, sha: file.sha, next });
   }
-  // Validate both documents first; each file SHA protects concurrent edits.
+  // Validate every document first; each file SHA protects concurrent edits.
   for (const { path, sha, next } of changes) {
     await github.rest.repos.createOrUpdateFileContents({
       owner, repo, branch, path, sha,
-      message: `docs: refresh public projects in ${path} [skip ci]`,
+      message: `docs: 自动更新主页介绍与项目目录 (${path}) [skip ci]`,
       content: Buffer.from(next, 'utf8').toString('base64'),
     });
-    core.info(`Updated the project section of ${path}.`);
+    core.info(`Updated introduction, portfolio, latest projects and tech stack in ${path}.`);
   }
-  if (!changes.length) core.info('Project lists unchanged; no commit needed.');
+  if (!changes.length) core.info('Profile content unchanged; no commit needed.');
 }
 
 module.exports = update;
@@ -195,3 +264,4 @@ module.exports.render = render;
 module.exports.renderTechStack = renderTechStack;
 module.exports.replaceSection = replaceSection;
 module.exports.replaceTechStack = replaceTechStack;
+module.exports.renderProfile = renderProfile;

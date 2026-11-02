@@ -1,15 +1,63 @@
-## Hi there! I'm Yuquan Xue 👋
+<div align="center">
 
-<table width="100%">
-<tr>
-<td width="54%" valign="top">
-      <h3>👨‍💻 About Me</h3>
-      <ul>
-        <li>🤖 Focused on robot control, arm simulation, and hardware–software integration.</li>
-        <li>🔌 Building firmware flashing and debugging tools for STM32.</li>
-        <li>💻 Using C++ and Python to build simulation interfaces and desktop tools.</li>
-        <li>🌱 Exploring LeRobot, tactile grippers, and embodied AI.</li>
-      </ul>
+# Yuquan Xue · xensexyq
+
+**Robotics · Embedded Systems · Perception Tooling**
+
+[English](README.md) · [简体中文](README.zh-CN.md)
+
+[Projects](#2-projects) · [Toolbox](#3-toolbox) · [Contact](#4-connect)
+
+</div>
+
+I build tools that connect robot hardware with usable software: device interfaces, firmware flashing, arm simulation, and camera data workflows. My work centers on C++ and Python, with an emphasis on practical integration, debugging and reproducible experiments.
+
+## 1. What I work on
+
+<!-- ABOUT:START -->
+<p>My 9 public projects cover the following areas, from hardware interfaces to simulation and perception tooling.</p>
+<ul>
+  <li><strong>Robot control and simulation</strong> · 2 — <a href="https://github.com/xensexyq/fastiter-control-sim">fastiter-control-sim</a>, <a href="https://github.com/xensexyq/fastiter-control-sim-win">fastiter-control-sim-win</a></li>
+  <li><strong>Embedded systems and device interfaces</strong> · 2 — <a href="https://github.com/xensexyq/DAP-Downloader">DAP-Downloader</a>, <a href="https://github.com/xensexyq/modbus-force-reader">modbus-force-reader</a></li>
+  <li><strong>Vision and state estimation</strong> · 3 — <a href="https://github.com/xensexyq/gemini-isaac-ros-workbench">gemini-isaac-ros-workbench</a>, <a href="https://github.com/xensexyq/OKVIS2-X-Gemini335L">OKVIS2-X-Gemini335L</a></li>
+  <li><strong>Other tools and resources</strong> · 2 — <a href="https://github.com/xensexyq/ai-cli-deploy">ai-cli-deploy</a>, <a href="https://github.com/xensexyq/rime-simplified-deploy">rime-simplified-deploy</a></li>
+</ul>
+<!-- ABOUT:END -->
+
+## 2. Projects
+
+<!-- PORTFOLIO:START -->
+<table>
+<thead><tr><th>Project</th><th>Focus / description</th></tr></thead>
+<tbody>
+<tr><td><a href="https://github.com/xensexyq/ai-cli-deploy">ai-cli-deploy</a></td><td><strong>Other tools and resources</strong><br />一键部署 Codex（ChatGPT 订阅 / DuckCoding 一键切换）与 Claude Code，支持 Linux 与 Windows</td></tr>
+<tr><td><a href="https://github.com/xensexyq/DAP-Downloader">DAP-Downloader</a></td><td><strong>Embedded systems and device interfaces</strong><br />Windows CMSIS-DAP firmware downloader for STM32H5</td></tr>
+<tr><td><a href="https://github.com/xensexyq/fastiter-control-sim">fastiter-control-sim</a></td><td><strong>Robot control and simulation</strong></td></tr>
+<tr><td><a href="https://github.com/xensexyq/fastiter-control-sim-win">fastiter-control-sim-win</a></td><td><strong>Robot control and simulation</strong><br />Native Windows support for FR3 Pinocchio C++ simulation</td></tr>
+<tr><td><a href="https://github.com/xensexyq/gemini-isaac-ros-workbench">gemini-isaac-ros-workbench</a></td><td><strong>Vision and state estimation</strong><br />Docker Community workbench for Orbbec Gemini cameras, Isaac ROS visual SLAM and depth mapping.</td></tr>
+<tr><td><a href="https://github.com/xensexyq/modbus-force-reader">modbus-force-reader</a></td><td><strong>Embedded systems and device interfaces</strong><br />通过 USB 转 RS485 读取并打印 Modbus RTU 力传感器寄存器值</td></tr>
+<tr><td><a href="https://github.com/xensexyq/OKVIS2-X-Gemini335L">OKVIS2-X-Gemini335L</a></td><td><strong>Vision and state estimation</strong><br />OKVIS2-X with Gemini 335L capture, calibration, CPU/GPU baselines and dense-mapping integration tools.</td></tr>
+<tr><td><a href="https://github.com/xensexyq/rime-simplified-deploy">rime-simplified-deploy</a></td><td><strong>Other tools and resources</strong><br />IBus Rime 简体中文一键部署：让 luna&#95;pinyin&#95;simp 稳定输出简体（Linux）</td></tr>
+<tr><td><a href="https://github.com/xensexyq/vio-atlas">vio-atlas</a></td><td><strong>Vision and state estimation</strong><br />Curated VIO and visual-inertial SLAM resources: software and hardware synchronization, drivers, calibration and evaluation.</td></tr>
+</tbody>
+</table>
+<!-- PORTFOLIO:END -->
+
+These are my public repositories, including integrations and resource collections. Projects built on Pinocchio, Isaac ROS or OKVIS2-X retain their upstream authorship; see each repository for scope and credits.
+
+**Team collaboration:** [TacCap-Gripper](https://github.com/XenseRobotics-AI/TacCap-Gripper) at XenseRobotics — a C++ / Python SDK for tactile grippers, sensor readout and motor control.
+
+<!-- PROJECTS:START -->
+<h3>🚀 Latest Projects <sub>daily · <a href="https://github.com/xensexyq?tab=repositories&amp;type=source">All →</a></sub></h3>
+<p>
+  &bull; <a href="https://github.com/xensexyq/OKVIS2-X-Gemini335L" title="OKVIS2-X with Gemini 335L capture, calibration, CPU/GPU baselines and dense-mapping integration tools."><strong>OKVIS2-X-Gemini335L</strong></a> · <code>C++</code><br />
+  &bull; <a href="https://github.com/xensexyq/gemini-isaac-ros-workbench" title="Docker Community workbench for Orbbec Gemini cameras, Isaac ROS visual SLAM and depth mapping."><strong>gemini-isaac-ros-workbench</strong></a> · <code>Python</code><br />
+  &bull; <a href="https://github.com/xensexyq/vio-atlas" title="Curated VIO and visual-inertial SLAM resources: software and hardware synchronization, drivers, calibration and evaluation."><strong>vio-atlas</strong></a>
+</p>
+<!-- PROJECTS:END -->
+
+## 3. Toolbox
+
 <!-- TECH_STACK:START -->
 <h3>🛠 Tech Stack</h3>
 <p>
@@ -20,24 +68,17 @@
   🖥 <img src="https://img.shields.io/badge/Qt-333333?logo=qt&amp;logoColor=41CD52" alt="Qt" /> <img src="https://img.shields.io/badge/Windows-333333" alt="Windows" /> <img src="https://img.shields.io/badge/Linux-333333?logo=linux&amp;logoColor=FCC624" alt="Linux" />
 </p>
 <!-- TECH_STACK:END -->
-<h3>🤝 Connect with Me</h3>
-<p>📧 Email: <a href="mailto:nxuerobot@gmail.com">nxuerobot@gmail.com</a></p>
-</td>
-<td width="46%" valign="top">
-      <a href="https://github.com/xensexyq">
-        <img width="100%" src="https://github-stats-extended.vercel.app/api?username=xensexyq&amp;show_icons=true&amp;theme=buefy&amp;include_all_commits=true" alt="xensexyq's GitHub statistics" />
-      </a>
-      <a href="https://github.com/xensexyq?tab=repositories">
-        <img width="100%" src="https://github-stats-extended.vercel.app/api/top-langs/?username=xensexyq&amp;theme=buefy&amp;layout=compact" alt="Most used languages in xensexyq's public repositories" />
-      </a>
-<!-- PROJECTS:START -->
-<h3>🚀 Latest Projects <sub>daily · <a href="https://github.com/xensexyq?tab=repositories&amp;type=source">All →</a></sub></h3>
-<p>
-  &bull; <a href="https://github.com/xensexyq/OKVIS2-X-Gemini335L" title="OKVIS2-X with Gemini 335L capture, calibration, CPU/GPU baselines and dense-mapping integration tools."><strong>OKVIS2-X-Gemini335L</strong></a> · <code>C++</code><br />
-  &bull; <a href="https://github.com/xensexyq/gemini-isaac-ros-workbench" title="Docker Community workbench for Orbbec Gemini cameras, Isaac ROS visual SLAM and depth mapping."><strong>gemini-isaac-ros-workbench</strong></a> · <code>Python</code><br />
-  &bull; <a href="https://github.com/xensexyq/vio-atlas" title="Curated VIO and visual-inertial SLAM resources: software and hardware synchronization, drivers, calibration and evaluation."><strong>vio-atlas</strong></a>
-</p>
-<!-- PROJECTS:END -->
-</td>
-</tr>
-</table>
+
+## 4. Connect
+
+[Email](mailto:nxuerobot@gmail.com) · [Bilibili](https://space.bilibili.com/356577945) · [All repositories](https://github.com/xensexyq?tab=repositories)
+
+<details>
+<summary>GitHub activity</summary>
+
+![GitHub statistics](https://github-stats-extended.vercel.app/api?username=xensexyq&show_icons=true&theme=buefy&include_all_commits=true)
+![Languages in public repositories](https://github-stats-extended.vercel.app/api/top-langs/?username=xensexyq&theme=buefy&layout=compact)
+
+</details>
+
+<sub>Project overview, catalog and toolbox refresh daily from public repositories. <a href="docs/AUTOMATION.md">How updates work</a>.</sub>
