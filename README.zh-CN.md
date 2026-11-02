@@ -25,6 +25,7 @@
 🖥️ <img height="20" src="https://img.shields.io/badge/Qt-333333?logo=qt&amp;logoColor=41CD52" alt="Qt" /> <img height="20" src="https://img.shields.io/badge/Windows-333333" alt="Windows" /> <img height="20" src="https://img.shields.io/badge/Linux-333333?logo=linux&amp;logoColor=FCC624" alt="Linux" />
 </pre>
 <!-- TECH_STACK:END -->
+<p>📧 邮箱： <a href="mailto:nxuerobot@gmail.com">nxuerobot@gmail.com</a> · <a href="https://space.bilibili.com/356577945">Bilibili</a></p>
 </td>
 <td width="50%" valign="top">
       <a href="https://github.com/xensexyq">
@@ -39,11 +40,6 @@
 <p><a href="https://github.com/xensexyq/gemini-isaac-ros-workbench" title="Docker Community workbench for Orbbec Gemini cameras, Isaac ROS visual SLAM and depth mapping."><strong>gemini-isaac-ros-workbench</strong></a> · <code>Python</code> — Docker Community workbench for Orbbec Gemini cameras, Isaac ROS visual SLAM and depth mapping.</p>
 <p><a href="https://github.com/xensexyq/vio-atlas" title="Curated VIO and visual-inertial SLAM resources: software and hardware synchronization, drivers, calibration and evaluation."><strong>vio-atlas</strong></a> — Curated VIO and visual-inertial SLAM resources: software and hardware synchronization, drivers, calibration and evaluation.</p>
 <!-- PROJECTS:END -->
-</td>
-</tr>
-<tr>
-<td colspan="2">
-<p>📧 邮箱： <a href="mailto:nxuerobot@gmail.com">nxuerobot@gmail.com</a> · <a href="https://space.bilibili.com/356577945">Bilibili</a></p>
 </td>
 </tr>
 </table>
