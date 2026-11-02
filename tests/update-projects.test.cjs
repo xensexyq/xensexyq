@@ -221,6 +221,11 @@ test('About Me summarizes experience without project links, names or repository 
   assert.ok(!about.includes('unique-device-tool'));
   assert.ok(!/\d+ public project/.test(about));
   assert.match(about, /firmware|device/i);
+  const mixed = update.renderProfile(document, [repo('robot', {description:'robot kinematics'}), repo('deploy', {description:'CLI setup utility'})], owner);
+  const focused = mixed.split('<!-- ABOUT:START -->')[1].split('<!-- ABOUT:END -->')[0];
+  assert.match(focused, /Robotics:/);
+  assert.ok(!focused.includes('recurring setup'));
+  assert.match(mixed, /Other tools and resources/);
   const zh = update.renderProfile(document,[repo('unique-device-tool',{description:'STM32 firmware'})],owner,'zh')
     .split('<!-- ABOUT:START -->')[1].split('<!-- ABOUT:END -->')[0];
   assert.ok(!zh.includes('<a '));
