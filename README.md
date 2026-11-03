@@ -31,7 +31,7 @@
         <img width="100%" src="https://github-stats-extended.vercel.app/api?username=xensexyq&amp;show_icons=true&amp;theme=buefy&amp;include_all_commits=true&amp;hide_rank=false&amp;hide_title=true&amp;line_height=20&amp;card_width=470" alt="xensexyq's GitHub statistics" />
       </a>
       <a href="https://github.com/xensexyq?tab=repositories">
-        <img width="100%" src="https://github-stats-extended.vercel.app/api/top-langs/?username=xensexyq&amp;theme=buefy&amp;layout=compact&amp;card_width=420&amp;hide_title=true" alt="Most used languages in xensexyq's public repositories" />
+        <img width="100%" src="https://github-stats-extended.vercel.app/api/top-langs/?username=xensexyq&amp;theme=buefy&amp;layout=compact&amp;card_width=470&amp;hide_title=true" alt="Most used languages in xensexyq's public repositories" />
       </a>
 <!-- PROJECTS:START -->
 <h3>🚀 Latest Projects <sub>daily · <a href="https://github.com/xensexyq?tab=repositories&amp;type=source">All →</a></sub></h3>

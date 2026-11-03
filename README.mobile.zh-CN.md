@@ -26,7 +26,7 @@
 <img width="470" src="https://github-stats-extended.vercel.app/api?username=xensexyq&amp;show_icons=true&amp;theme=buefy&amp;include_all_commits=true&amp;hide_rank=false&amp;hide_title=true&amp;line_height=20&amp;card_width=470" alt="xensexyq 的 GitHub 统计" />
 </a>
 <a href="https://github.com/xensexyq?tab=repositories">
-<img width="470" src="https://github-stats-extended.vercel.app/api/top-langs/?username=xensexyq&amp;theme=buefy&amp;layout=compact&amp;card_width=420&amp;hide_title=true" alt="xensexyq 公开仓库使用的语言" />
+<img width="470" src="https://github-stats-extended.vercel.app/api/top-langs/?username=xensexyq&amp;theme=buefy&amp;layout=compact&amp;card_width=470&amp;hide_title=true" alt="xensexyq 公开仓库使用的语言" />
 </a>
 <!-- PROJECTS:START -->
 <h3>🚀 最新项目 <sub>每日更新 · <a href="https://github.com/xensexyq?tab=repositories&amp;type=source">全部 →</a></sub></h3>
